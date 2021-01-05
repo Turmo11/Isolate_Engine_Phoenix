@@ -22,7 +22,7 @@ public:
 	ModuleScene* scene;
 	ModuleRenderer3D* renderer3D;
 	ModuleCamera3D* camera;
-	ModuleEditor* editor;
+	ModuleEditor* text_editor;
 	ModuleFileSystem* fileSystem ;
 	ModuleResources* resources;
 

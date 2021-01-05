@@ -25,6 +25,8 @@
 #include "PathNode.h"
 #include <map>
 
+#include <fstream>
+
 #include "Dependencies/Glew/include/GL/glew.h"
 #include "Dependencies/SDL/include/SDL_opengl.h"
 
@@ -63,22 +65,30 @@ bool ModuleEditor::Start()
 
 	//ImGui::SaveIniSettingsToDisk()
 
+	//TEXT EDITOR Initialized
+	TextEditor::LanguageDefinition lang = TextEditor::LanguageDefinition::Wren();
+
+	texteditor_file = "alphascript.txt";
+
+	std::ifstream t(texteditor_file.c_str());
+	if (t.good())
+	{
+		std::string str((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
+		text_editor.SetText(str);
+	}
+	text_editor.SetPalette(TextEditor::GetDarkPalette());
+
 	return true;
 }
 update_status ModuleEditor::PreUpdate(float dt)
 {
 	update_status ret = UPDATE_CONTINUE;
 
-
-
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplSDL2_NewFrame(App->window->window);
 	
 	ImGui::NewFrame();
 	
-
-
-
 	return ret;
 }
 
@@ -90,7 +100,7 @@ update_status ModuleEditor::Update(float dt)
 
 	if (!MainMenuBar()) return UPDATE_STOP;
 	
-	SetupStyleFromHue(); //This is innovation, Marc
+	SetupStyleFromHue(); //This is innovation, Marc XD
 	AboutWindow();
 	ConfigurationWindow();
 	ConsoleWindow();
@@ -99,8 +109,7 @@ update_status ModuleEditor::Update(float dt)
 	InspectorWindow();
 	AssetExplorerWindow();
 	PlayPauseWindow();
-
-	
+	TextEditorWindow();
 	
 
 	GUIisHovered();
@@ -433,9 +442,9 @@ void ModuleEditor::AboutWindow()
 {
 	if (show_about_window) {
 		ImGui::Begin("About", &show_about_window);
-		ImGui::Text("ASE - Another Small Engine");
+		ImGui::Text("IEP - Isolate Engine Phoenix");
 		ImGui::Text("Engine developed for academic purpouses.");
-		ImGui::Text("By Pau Fiol & Aitor Luque");
+		ImGui::Text("By Fran Guerrero & Guillem Turmo");
 		sprintf(label, "Github Repository (Link)");
 		if (ImGui::Selectable(label, true))	RequestBrowser("https://github.com/paufiol/AnotherSmallEngine");
 		ImGui::Separator();
@@ -454,6 +463,69 @@ void ModuleEditor::AboutWindow()
 		ImGui::End();
 
 	}
+}
+
+void ModuleEditor::TextEditorWindow()
+{
+	ImGui::Begin("Text Editor", nullptr, ImGuiWindowFlags_HorizontalScrollbar | ImGuiWindowFlags_MenuBar);
+
+	auto cpos = text_editor.GetCursorPosition();
+	if (ImGui::BeginMenuBar())
+	{
+		if (ImGui::BeginMenu("File"))
+		{
+			if (ImGui::MenuItem("Save"))
+			{
+				std::string textToSave = text_editor.GetText();
+
+				App->fileSystem->Remove("");
+
+				App->fileSystem->Save("", textToSave.c_str(), text_editor.GetText().size());
+			}
+
+			ImGui::EndMenu();
+		}
+		if (ImGui::BeginMenu("Edit"))
+		{
+			if (ImGui::MenuItem("Undo", "Ctrl+Z", nullptr, text_editor.CanUndo()))
+				text_editor.Undo();
+			if (ImGui::MenuItem("Redo", "Ctrl+Y", nullptr, text_editor.CanRedo()))
+				text_editor.Redo();
+
+			ImGui::Separator();
+
+			if (ImGui::MenuItem("Copy", "Ctrl+C", nullptr, text_editor.HasSelection()))
+				text_editor.Copy();
+			if (ImGui::MenuItem("Cut", "Ctrl+X", nullptr, text_editor.HasSelection()))
+				text_editor.Cut();
+			if (ImGui::MenuItem("Delete", "Del", nullptr, text_editor.HasSelection()))
+				text_editor.Delete();
+			if (ImGui::MenuItem("Paste", "Ctrl+V", nullptr, ImGui::GetClipboardText() != nullptr))
+				text_editor.Paste();
+
+			ImGui::Separator();
+
+			if (ImGui::MenuItem("Select all", nullptr, nullptr))
+				text_editor.SetSelection(TextEditor::Coordinates(), TextEditor::Coordinates(text_editor.GetTotalLines(), 0));
+
+			ImGui::EndMenu();
+		}
+
+		ImGui::EndMenuBar();
+	}
+
+	ImGui::Text("%6d/%-6d Total lines: %d | %s | %s | Cursor: %s                       File name: %s | Language: %s",
+		cpos.mLine + 1,
+		cpos.mColumn + 1,
+		text_editor.GetTotalLines(),
+		text_editor.CanUndo() ? "<-" : "-",
+		text_editor.CanRedo() ? "->" : "-",
+		text_editor.IsOverwrite() ? "Ovr" : "Ins",
+		texteditor_file.c_str(), 
+		text_editor.GetLanguageDefinition().mName.c_str());
+
+	text_editor.Render("TextEditor");
+	ImGui::End();
 }
 
 void ModuleEditor::ConfigurationWindow()

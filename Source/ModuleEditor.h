@@ -2,6 +2,7 @@
 #define __ModuleEditor_H__
 #include "Module.h"
 #include "Dependencies/ImGui/imgui.h"
+#include "Dependencies/ImGui/TextEditor.h"
 #include "Globals.h"
 #include "Timer.h"
 #include "Color.h"
@@ -9,7 +10,7 @@
 using namespace std;
 
 class GameObject;
-
+class TextEditor;
 
 class ModuleEditor : public Module 
 {
@@ -36,6 +37,7 @@ public:
 	void HierarchyWindow();
 	void DrawHierarchyLevel(GameObject* rootObject);
 
+	void TextEditorWindow();
 	void SetupStyleFromHue();
 	void PlayPauseWindow();
 	void AssetExplorerWindow();
@@ -103,6 +105,9 @@ public:
 	Color NormalColor = Color(.8f, .8f, 0.0f, 0.75f);
 	Color AABBColor = Color(1.0f, 0.2f, 0.2f, 0.75f);
 	Color OBBColor = Color(0.2f, 0.2f, 1.0f, 0.75f);
+
+	TextEditor text_editor;
+	std::string texteditor_file;
 };
 
 #endif //__ModuleEditor_H__

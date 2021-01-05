@@ -90,7 +90,7 @@ update_status ModuleCamera3D::Update(float dt)
 
 	
 	
-	if(!App->editor->GUIhovered)
+	if(!App->text_editor->GUIhovered)
 	{
 		if (App->input->GetMouseButton(SDL_BUTTON_LEFT) == KEY_DOWN)
 		{

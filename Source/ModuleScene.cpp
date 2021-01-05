@@ -93,7 +93,7 @@ update_status ModuleScene::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_DELETE) == KEY_DOWN)
 		App->scene->DeleteGameObject(App->scene->selected_object);
 
-	if(!App->editor->isUserTyping)
+	if(!App->text_editor->isUserTyping)
 	{
 		if (App->input->GetKey(SDL_SCANCODE_W)) gizmoOperation = ImGuizmo::OPERATION::TRANSLATE;
 		else if (App->input->GetKey(SDL_SCANCODE_E)) gizmoOperation = ImGuizmo::OPERATION::ROTATE;

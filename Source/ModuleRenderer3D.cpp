@@ -157,7 +157,7 @@ update_status ModuleRenderer3D::PreUpdate(float dt)
 		glLineWidth(2.0f);
 		vec* frustum_corners;
 		frustum_corners = App->camera->gameCamera->GetFrustumPoints();
-		DrawCuboid(frustum_corners, App->editor->frustumColor);
+		DrawCuboid(frustum_corners, App->text_editor->frustumColor);
 	}
 
 	glEnd();
@@ -168,7 +168,7 @@ update_status ModuleRenderer3D::PreUpdate(float dt)
 // PostUpdate present buffer to screen
 update_status ModuleRenderer3D::PostUpdate(float dt)
 {
-	if (App->editor->drawWireframe) { glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); glEnable(GL_TEXTURE_CUBE_MAP); }
+	if (App->text_editor->drawWireframe) { glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); glEnable(GL_TEXTURE_CUBE_MAP); }
 	else { glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); glDisable(GL_TEXTURE_CUBE_MAP); }
 	
 	IterateMeshDraw();
@@ -177,7 +177,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	
 
 	
-	App->editor->DrawGUI();
+	App->text_editor->DrawGUI();
 
 	UpdateProjectionMatrix();
 
@@ -253,12 +253,12 @@ void ModuleRenderer3D::IterateMeshDraw()
 				if (componentTex != nullptr) 
 				{
 					DrawMesh(tempComponentMesh->GetMesh(), tempComponentTransform->GetGlobalTransform(), componentTex->GetMaterial(), App->scene->game_objects[i]);
-					if (App->editor->drawNormals) DrawNormals(tempComponentMesh->GetMesh(), tempComponentTransform->GetGlobalTransform());
+					if (App->text_editor->drawNormals) DrawNormals(tempComponentMesh->GetMesh(), tempComponentTransform->GetGlobalTransform());
 				}
 				else 
 				{
 					DrawMesh(tempComponentMesh->GetMesh(), tempComponentTransform->GetLocalTransform(), nullptr, App->scene->game_objects[i]);
-					if (App->editor->drawNormals) DrawNormals(tempComponentMesh->GetMesh(), tempComponentTransform->GetLocalTransform());
+					if (App->text_editor->drawNormals) DrawNormals(tempComponentMesh->GetMesh(), tempComponentTransform->GetLocalTransform());
 				}
 
 				if (drawboundingboxes) {
@@ -267,9 +267,9 @@ void ModuleRenderer3D::IterateMeshDraw()
 
 					vec* corners = new vec[8];
 					App->scene->game_objects[i]->aabb.GetCornerPoints(corners);
-					DrawCuboid(corners, App->editor->AABBColor);
+					DrawCuboid(corners, App->text_editor->AABBColor);
 					App->scene->game_objects[i]->obb.GetCornerPoints(corners);
-					DrawCuboid(corners, App->editor->OBBColor);
+					DrawCuboid(corners, App->text_editor->OBBColor);
 
 					delete[] corners;
 
@@ -298,13 +298,13 @@ void ModuleRenderer3D::DrawMesh(ResourceMesh* mesh, float4x4 transform, Resource
 			Color color = rMaterial->GetColor();
 			glColor4f(color.r, color.g, color.b, color.a);
 		}
-		else if (App->editor->drawTexture && !App->editor->drawCheckerTex)
+		else if (App->text_editor->drawTexture && !App->text_editor->drawCheckerTex)
 		{
 			glEnable(GL_TEXTURE_2D);
 			glBindTexture(GL_TEXTURE_2D, rMaterial->GetId());
 
 		}
-		else if (!App->editor->drawTexture && App->editor->drawCheckerTex)
+		else if (!App->text_editor->drawTexture && App->text_editor->drawCheckerTex)
 		{
 			glEnable(GL_TEXTURE_2D);
 			glBindTexture(GL_TEXTURE_2D, checkerID);
@@ -378,7 +378,7 @@ void ModuleRenderer3D::UseCheckerTexture() {
 void ModuleRenderer3D::DrawNormals(ResourceMesh* mesh, float4x4 transform)
 {
 	glBegin(GL_LINES);
-	glColor4f(App->editor->NormalColor.r, App->editor->NormalColor.g, App->editor->NormalColor.b, App->editor->NormalColor.a);
+	glColor4f(App->text_editor->NormalColor.r, App->text_editor->NormalColor.g, App->text_editor->NormalColor.b, App->text_editor->NormalColor.a);
 	
 	for (uint i = 0; i < mesh->size[ResourceMesh::vertex] * 3; i +=3)
 	{

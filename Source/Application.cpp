@@ -18,7 +18,7 @@ Application::Application() : debug(false), renderPrimitives(true), dt(0.16f)
 	scene = new ModuleScene();
 	renderer3D = new ModuleRenderer3D();
 	camera = new ModuleCamera3D();
-	editor = new ModuleEditor();
+	text_editor = new ModuleEditor();
 	fileSystem = new ModuleFileSystem();
 	resources = new ModuleResources();
 
@@ -37,7 +37,7 @@ Application::Application() : debug(false), renderPrimitives(true), dt(0.16f)
 	AddModule(scene);
 	AddModule(resources);
 
-	AddModule(editor);
+	AddModule(text_editor);
 	// Renderer last!
 
 	AddModule(renderer3D);

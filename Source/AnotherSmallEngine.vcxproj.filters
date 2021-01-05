@@ -257,6 +257,9 @@
     <ClCompile Include="Dependencies\ImGuizmo\ImSequencer.cpp">
       <Filter>Dependencies\ImGuizmo</Filter>
     </ClCompile>
+    <ClCompile Include="Dependencies\ImGui\TextEditor.cpp">
+      <Filter>Dependencies\ImGui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dependencies\ImGui\imconfig.h">
@@ -987,6 +990,9 @@
     </ClInclude>
     <ClInclude Include="Dependencies\ImGuizmo\ImZoomSlider.h">
       <Filter>Dependencies\ImGuizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\ImGui\TextEditor.h">
+      <Filter>Dependencies\ImGui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

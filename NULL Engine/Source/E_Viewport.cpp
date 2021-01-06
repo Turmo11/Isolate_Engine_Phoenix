@@ -11,53 +11,37 @@
 #include "C_Transform.h"
 #include "C_Camera.h"
 
-#include "E_Scene.h"
+#include "E_Viewport.h"
 
-E_Scene::E_Scene() : EditorPanel("Scene"),
+E_Viewport::E_Viewport() : EditorPanel("Viewport"),
 tex_size			({ 0.0f, 0.0f }),
 tex_origin			({ 0.0f, 0.0f }),
 cursor_pos			({ 0.0f, 0.0f }),
 guizmo_operation	(ImGuizmo::OPERATION::TRANSLATE),
-guizmo_mode			(ImGuizmo::MODE::WORLD)
+guizmo_mode			(ImGuizmo::MODE::WORLD),
+using_guizmo(false),
+scene_focused(false),
+game_focused(false)
 {
 
 }
 
-E_Scene::~E_Scene()
+E_Viewport::~E_Viewport()
 {
 
 }
 
-bool E_Scene::Draw(ImGuiIO& io)
+bool E_Viewport::Draw(ImGuiIO& io)
 {
 	bool ret = true;
 
-	ImGui::Begin("Game");
-	
-	CheckSceneIsClicked();
-	
-	AdaptTextureToWindowSize();
-	DrawSceneTexture();
-	
-	ImGui::End();
-
-	ImGui::Begin("Scene");
-
-	SetIsHovered();
-
-	CheckSceneIsClicked();
-
-	AdaptTextureToWindowSize();
-	DrawSceneTexture();
-
-	HandleGuizmos();
-
-	ImGui::End();
+	DrawScene();
+	DrawGame();
 
 	return ret;
 }
 
-bool E_Scene::CleanUp()
+bool E_Viewport::CleanUp()
 {
 	bool ret = true;
 
@@ -66,8 +50,8 @@ bool E_Scene::CleanUp()
 	return ret;
 }
 
-// --- E_SCENE METHODS ---
-float2 E_Scene::GetWorldMousePosition()
+// --- E_Viewport METHODS ---
+float2 E_Viewport::GetWorldMousePosition()
 {	
 	float win_width		= (float)App->window->GetWidth();
 	float win_height	= (float)App->window->GetHeight();
@@ -86,7 +70,7 @@ float2 E_Scene::GetWorldMousePosition()
 	return world_mouse_pos;
 }
 
-float2 E_Scene::GetScreenMousePosition()
+float2 E_Viewport::GetScreenMousePosition()
 {
 	float win_width		= (float)App->window->GetWidth();
 	float win_height	= (float)App->window->GetHeight();
@@ -106,7 +90,7 @@ float2 E_Scene::GetScreenMousePosition()
 	return screen_mouse_pos;
 }
 
-float2 E_Scene::GetWorldMouseMotion()
+float2 E_Viewport::GetWorldMouseMotion()
 {
 	float2 win_mouse_motion	= float2((float)App->input->GetMouseXMotion(), (float)App->input->GetMouseYMotion());
 	float2 win_size			= float2((float)App->window->GetWidth(), (float)App->window->GetHeight());
@@ -118,46 +102,68 @@ float2 E_Scene::GetWorldMouseMotion()
 	return world_mouse_motion;
 }
 
-float2 E_Scene::GetSceneTextureSize()
+float2 E_Viewport::GetSceneTextureSize()
 {
 	return float2(tex_size.x, tex_size.y);
 }
 
-bool E_Scene::UsingGuizmo()
+bool E_Viewport::UsingGuizmo()
 {
 	return ImGuizmo::IsUsing();
 }
 
-void E_Scene::CheckSceneIsClicked()
+bool E_Viewport::HoveringGuizmo()
 {
-	if (ImGui::IsWindowHovered())
-	{
-		ImGui::FocusWindow(ImGui::GetCurrentWindow());
-	}
-	else
-	{
-		if (ImGui::IsWindowFocused())
-		{
-			if (ImGui::IsMouseClicked(ImGuiMouseButton_Left) 
-				|| ImGui::IsMouseClicked(ImGuiMouseButton_Right) 
-				|| ImGui::IsMouseClicked(ImGuiMouseButton_Middle))
-			{
-				ImGui::FocusWindow(nullptr);
-			}
-		}
-	}
-
-	if (ImGui::IsWindowFocused())
-	{
-		SetIsClicked(true);
-	}
-	else
-	{
-		SetIsClicked(false);
-	}
+	return ImGuizmo::IsOver();
 }
 
-void E_Scene::AdaptTextureToWindowSize()
+void E_Viewport::DrawScene()
+{
+	ImGui::Begin("Scene");
+
+	if (!App->play && !scene_focused)
+	{
+		ImGui::FocusWindow(ImGui::GetCurrentWindow());
+		ImGui::FocusWindow(nullptr);
+
+		scene_focused = true;
+		game_focused = false;
+	}
+
+	SetIsHovered();
+	AdaptTextureToWindowSize();
+
+	DrawSceneTexture();
+
+	HandleGuizmos();
+
+	ImGui::End();
+}
+
+void E_Viewport::DrawGame()
+{
+	ImGui::Begin("Game", (bool*)0, ImGuiWindowFlags_NoFocusOnAppearing);
+
+	if (App->play && !game_focused)
+	{
+		ImGui::FocusWindow(ImGui::GetCurrentWindow());
+		ImGui::FocusWindow(nullptr);
+
+		game_focused = true;
+		scene_focused = false;
+	}
+
+	SetIsHovered();
+	AdaptTextureToWindowSize();
+
+	DrawSceneTexture();
+
+	HandleGuizmos();
+
+	ImGui::End();
+}
+
+void E_Viewport::AdaptTextureToWindowSize()
 {	
 	tex_size			= ImVec2((float)App->window->GetWidth(), (float)App->window->GetHeight());
 	ImVec2 win_size		= ImGui::GetWindowSize() * 0.975f;													// An offset is added so the image is entirely enclosed by the window.
@@ -176,7 +182,7 @@ void E_Scene::AdaptTextureToWindowSize()
 	}
 }
 
-void E_Scene::DrawSceneTexture()
+void E_Viewport::DrawSceneTexture()
 {
 	cursor_pos = (ImGui::GetWindowSize() - tex_size) * 0.5f;
 	ImGui::SetCursorPos(cursor_pos);
@@ -192,11 +198,9 @@ void E_Scene::DrawSceneTexture()
 	tex_origin.y	= (float)App->window->GetHeight() - tex_origin.y;										// Converting from top-left Y origin to bottom-left Y origin.
 
 	ImGui::Image((ImTextureID)App->renderer->GetSceneRenderTexture(), tex_size, ImVec2(0.0f, 1.0f), ImVec2(1.0f, 0.0f));
-
-	//ImGui::Image((ImTextureID)App->renderer->GetDepthBufferTexture(), tex_size, ImVec2(0.0f, 1.0f), ImVec2(1.0f, 0.0f));
 }
 
-void E_Scene::HandleGuizmos()
+void E_Viewport::HandleGuizmos()
 {	
 	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_STATE::KEY_DOWN)
 	{

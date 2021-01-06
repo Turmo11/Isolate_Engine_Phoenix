@@ -99,17 +99,14 @@ UPDATE_STATUS M_Camera3D::Update(float dt)
 {
 	if (App->editor->SceneIsHovered())
 	{
-		if (App->editor->EditorSceneIsBeingClicked() && !App->editor->UsingGuizmoInScene())
+		if (!App->editor->HoveringGuizmo())
 		{
 			if (App->input->GetMouseButton(SDL_BUTTON_LEFT) == KEY_STATE::KEY_DOWN)
 			{
 				CastRay();
 			}
 		}
-	}
-	
-	if (App->editor->EditorSceneIsBeingClicked())
-	{	
+		
 		if (App->input->GetMouseButton(SDL_BUTTON_RIGHT) == KEY_STATE::KEY_REPEAT)
 		{
 			WASDMovement();

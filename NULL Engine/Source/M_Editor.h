@@ -18,8 +18,7 @@ class E_Hierarchy;
 class E_Inspector;
 class E_Console;
 class E_Project;
-class E_Scene;
-class E_Game;
+class E_Viewport;
 class E_ImGuiDemo;
 class E_About;
 class E_LoadFile;
@@ -65,7 +64,6 @@ public:
 	void			CheckShowHideFlags					();										// Will check whether or not each of the panels must be enabled or disabled.
 
 	bool			EditorIsBeingHovered				() const;								// Will check whether or not any of the editor panels is being hovered.
-	bool			EditorSceneIsBeingClicked			() const;
 	bool			RenderEditorPanels					() const;								// Will call ImGui::Render() to render all the panels on the screen.
 	bool			InitializeImGui						() const;								// Creates an ImGui Context and sets an initial configuration for it.
 
@@ -100,9 +98,10 @@ public:																							// --- Panel/Window Methods. Acts as an interface 
 
 	bool			SceneIsHovered						() const;
 	bool			UsingGuizmoInScene					() const;
+	bool			HoveringGuizmo						() const;
 
 	void			LoadFileThroughEditor				(const char* path);						// Load File: Will send the given path to the Importer.
-
+	void			SaveSceneThroughEditor				(const char* path);
 private:
 	bool BeginRootWindow(ImGuiIO& io, const char* window_id, bool docking, ImGuiWindowFlags window_flags = ImGuiWindowFlags_None);							// Generates a root window for docking.
 	void BeginDockspace(ImGuiIO& io, const char* dockspace_id, ImGuiDockNodeFlags docking_flags = ImGuiDockNodeFlags_None, ImVec2 size = { 0.0f, 0.0f });	// Generates a new dockspace.
@@ -117,8 +116,7 @@ public:
 	E_Inspector*				inspector;
 	E_Console*					console;
 	E_Project*					project;
-	E_Scene*					scene;
-	E_Game*						game;
+	E_Viewport*					viewport;
 	E_ImGuiDemo*				imgui_demo;
 	E_About*					about;
 	E_LoadFile*					load_file;

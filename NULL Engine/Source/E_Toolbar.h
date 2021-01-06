@@ -13,7 +13,8 @@ public:
 	bool CleanUp() override;
 
 private:
-
+	void ShowTimeState();
+	void ShowTimeDisplay();
 
 };
 

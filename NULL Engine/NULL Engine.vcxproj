@@ -27,7 +27,6 @@
     <ClCompile Include="Source\Dependencies\ImGui\include\imgui_impl_opengl3.cpp" />
     <ClCompile Include="Source\Dependencies\ImGui\include\imgui_impl_sdl.cpp" />
     <ClCompile Include="Source\Dependencies\ImGui\include\imgui_widgets.cpp" />
-    <ClCompile Include="Source\Dependencies\ImGui\include\TextEditor.cpp" />
     <ClCompile Include="Source\Dependencies\MathGeoLib\include\Algorithm\GJK.cpp" />
     <ClCompile Include="Source\Dependencies\MathGeoLib\include\Algorithm\GJK2D.cpp" />
     <ClCompile Include="Source\Dependencies\MathGeoLib\include\Algorithm\Random\LCG.cpp" />
@@ -82,7 +81,6 @@
     <ClCompile Include="Source\EditorPanel.cpp" />
     <ClCompile Include="Source\E_ImGuiDemo.cpp" />
     <ClCompile Include="Source\E_Project.cpp" />
-    <ClCompile Include="Source\E_TextEditor.cpp" />
     <ClCompile Include="Source\E_Viewport.cpp" />
     <ClCompile Include="Source\E_MainMenuBar.cpp" />
     <ClCompile Include="Source\E_Toolbar.cpp" />
@@ -162,7 +160,6 @@
     <ClInclude Include="Source\Dependencies\ImGui\include\imstb_rectpack.h" />
     <ClInclude Include="Source\Dependencies\ImGui\include\imstb_textedit.h" />
     <ClInclude Include="Source\Dependencies\ImGui\include\imstb_truetype.h" />
-    <ClInclude Include="Source\Dependencies\ImGui\include\TextEditor.h" />
     <ClInclude Include="Source\Dependencies\MathGeoLib\include\Algorithm\GJK.h" />
     <ClInclude Include="Source\Dependencies\MathGeoLib\include\Algorithm\GJK2D.h" />
     <ClInclude Include="Source\Dependencies\MathGeoLib\include\Algorithm\Random\LCG.h" />
@@ -246,7 +243,6 @@
     <ClInclude Include="Source\DevIL.h" />
     <ClInclude Include="Source\E_LoadFile.h" />
     <ClInclude Include="Source\E_Project.h" />
-    <ClInclude Include="Source\E_TextEditor.h" />
     <ClInclude Include="Source\E_Toolbar.h" />
     <ClInclude Include="Source\FileSystemDefinitions.h" />
     <ClInclude Include="Source\E_About.h" />

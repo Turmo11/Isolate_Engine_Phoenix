@@ -26,7 +26,6 @@
 #include "E_Viewport.h"
 #include "E_ImGuiDemo.h"
 #include "E_About.h"
-#include "E_TextEditor.h"
 #include "E_LoadFile.h"
 
 #include "M_Editor.h"
@@ -47,7 +46,6 @@ project			(nullptr),
 viewport		(nullptr),
 imgui_demo		(nullptr),
 about			(nullptr),
-text_editor		(nullptr),
 load_file		(nullptr)
 {
 	main_menu_bar	= new E_MainMenuBar();
@@ -58,7 +56,6 @@ load_file		(nullptr)
 	console			= new E_Console();
 	project			= new E_Project();
 	viewport		= new E_Viewport();
-	text_editor		= new E_TextEditor();
 	imgui_demo		= new E_ImGuiDemo();
 	about			= new E_About();
 	load_file		= new E_LoadFile();
@@ -71,7 +68,6 @@ load_file		(nullptr)
 	AddEditorPanel(console);
 	AddEditorPanel(project);
 	AddEditorPanel(viewport);
-	AddEditorPanel(text_editor);
 	AddEditorPanel(imgui_demo);
 	AddEditorPanel(about);
 	AddEditorPanel(load_file);
@@ -80,7 +76,6 @@ load_file		(nullptr)
 	show_hierarchy			= true;
 	show_inspector			= true;
 	show_console			= true;
-	show_text_editor		= true;
 	show_imgui_demo			= false;
 	show_about_popup		= false;
 	show_close_app_popup	= false;
@@ -273,7 +268,6 @@ void M_Editor::CheckShowHideFlags()
 	show_project			?	project->Enable()		: project->Disable();						// Project
 	show_imgui_demo			?	imgui_demo->Enable()	: imgui_demo->Disable();					// ImGui Demo
 	show_about_popup		?	about->Enable()			: about->Disable();							// About Popup
-	show_text_editor		?	text_editor->Enable()	: text_editor->Disable();					// Text Editor
 	show_load_file_popup	?	load_file->Enable()		: load_file->Disable();						// Load File
 }
 
@@ -344,8 +338,6 @@ bool M_Editor::InitializeImGui() const
 
 	ImGui_ImplSDL2_InitForOpenGL(App->window->GetWindow(), App->renderer->context);				// Setting up Platform/Renderer bindings
 	ImGui_ImplOpenGL3_Init(0);																	// -------------------------------------
-
-	App->editor->text_editor->InitializeTextEditor();
 
 	return ret;
 }

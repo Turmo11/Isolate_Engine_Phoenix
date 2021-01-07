@@ -19,7 +19,6 @@ class E_Inspector;
 class E_Console;
 class E_Project;
 class E_Viewport;
-class E_TextEditor;
 class E_ImGuiDemo;
 class E_About;
 class E_LoadFile;
@@ -118,7 +117,6 @@ public:
 	E_Console*					console;
 	E_Project*					project;
 	E_Viewport*					viewport;
-	E_TextEditor*				text_editor;
 	E_ImGuiDemo*				imgui_demo;
 	E_About*					about;
 	E_LoadFile*					load_file;
@@ -130,7 +128,6 @@ public:
 	bool						show_inspector;													// Enable/Disable the Inspector window.
 	bool						show_console;													// Enable/Disable the Console window.
 	bool						show_project;													// Enable/Disable the Project window.
-	bool						show_text_editor;												// Enable/Disable the Text Editor window.
 	bool						show_imgui_demo;												// Enable/Disable the ImGui Demo window.
 	bool						show_about_popup;												// Enable/Disable the About window popup.
 	bool						show_load_file_popup;											// Enable/Disable the Load File popup.

@@ -73,6 +73,15 @@
     <ClCompile Include="Source\Dependencies\mmgr\include\mmgr.cpp" />
     <ClCompile Include="Source\Dependencies\parson\include\parson.c" />
     <ClCompile Include="Source\Dependencies\PCG\include\pcg_basic.c" />
+    <ClCompile Include="Source\Dependencies\Wren\wren_compiler.c" />
+    <ClCompile Include="Source\Dependencies\Wren\wren_core.c" />
+    <ClCompile Include="Source\Dependencies\Wren\wren_debug.c" />
+    <ClCompile Include="Source\Dependencies\Wren\wren_opt_meta.c" />
+    <ClCompile Include="Source\Dependencies\Wren\wren_opt_random.c" />
+    <ClCompile Include="Source\Dependencies\Wren\wren_primitive.c" />
+    <ClCompile Include="Source\Dependencies\Wren\wren_utils.c" />
+    <ClCompile Include="Source\Dependencies\Wren\wren_value.c" />
+    <ClCompile Include="Source\Dependencies\Wren\wren_vm.c" />
     <ClCompile Include="Source\E_About.cpp" />
     <ClCompile Include="Source\E_Configuration.cpp" />
     <ClCompile Include="Source\E_Console.cpp" />
@@ -243,6 +252,19 @@
     <ClInclude Include="Source\Dependencies\parson\include\parson.h" />
     <ClInclude Include="Source\Dependencies\PCG\include\pcg_basic.h" />
     <ClInclude Include="Source\Dependencies\PhysFS\include\physfs.h" />
+    <ClInclude Include="Source\Dependencies\Wren\wren.h" />
+    <ClInclude Include="Source\Dependencies\Wren\wren.hpp" />
+    <ClInclude Include="Source\Dependencies\Wren\wren_common.h" />
+    <ClInclude Include="Source\Dependencies\Wren\wren_compiler.h" />
+    <ClInclude Include="Source\Dependencies\Wren\wren_core.h" />
+    <ClInclude Include="Source\Dependencies\Wren\wren_debug.h" />
+    <ClInclude Include="Source\Dependencies\Wren\wren_opcodes.h" />
+    <ClInclude Include="Source\Dependencies\Wren\wren_opt_meta.h" />
+    <ClInclude Include="Source\Dependencies\Wren\wren_opt_random.h" />
+    <ClInclude Include="Source\Dependencies\Wren\wren_primitive.h" />
+    <ClInclude Include="Source\Dependencies\Wren\wren_utils.h" />
+    <ClInclude Include="Source\Dependencies\Wren\wren_value.h" />
+    <ClInclude Include="Source\Dependencies\Wren\wren_vm.h" />
     <ClInclude Include="Source\DevIL.h" />
     <ClInclude Include="Source\E_LoadFile.h" />
     <ClInclude Include="Source\E_Project.h" />
@@ -310,6 +332,12 @@
   <ItemGroup>
     <None Include="Resources\Configuration\configuration.JSON" />
     <None Include="Resources\Configuration\default_configuration.JSON" />
+    <None Include="Source\Dependencies\Wren\wren_core.wren" />
+    <None Include="Source\Dependencies\Wren\wren_core.wren.inc" />
+    <None Include="Source\Dependencies\Wren\wren_opt_meta.wren" />
+    <None Include="Source\Dependencies\Wren\wren_opt_meta.wren.inc" />
+    <None Include="Source\Dependencies\Wren\wren_opt_random.wren" />
+    <None Include="Source\Dependencies\Wren\wren_opt_random.wren.inc" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{746CC4C3-787F-4B0E-AA66-E388FE3FF4F6}</ProjectGuid>

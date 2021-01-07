@@ -7,12 +7,12 @@
 
 #include "VariableTypedefs.h"
 
-#include "T_PerfectTimer.h"
+#include "PerfTimer.h"
 
-uint64 T_PerfectTimer::frequency = 0;
+uint64 PerfTimer::frequency = 0;
 
 // ---------------------------------------------
-T_PerfectTimer::T_PerfectTimer() : running(false), started_at(0), stopped_at(0)
+PerfTimer::PerfTimer() : running(false), started_at(0), stopped_at(0)
 {
 	if (frequency == 0)
 	{
@@ -23,21 +23,21 @@ T_PerfectTimer::T_PerfectTimer() : running(false), started_at(0), stopped_at(0)
 }
 
 // ---------------------------------------------
-void T_PerfectTimer::Start()
+void PerfTimer::Start()
 {
 	running		= true;																		// Starts the timer.
 	started_at	= SDL_GetPerformanceCounter();												// Registers the starting time in microseconds.
 }
 
 // ---------------------------------------------
-void T_PerfectTimer::Stop()
+void PerfTimer::Stop()
 {
 	running		= false;																	// Stops the timer.
 	stopped_at	= SDL_GetPerformanceCounter();												// Registers the stopping time in microseconds.
 }
 
 // ---------------------------------------------
-double T_PerfectTimer::ReadMs() const
+double PerfTimer::ReadMs() const
 {
 	if (running)
 	{
@@ -50,7 +50,7 @@ double T_PerfectTimer::ReadMs() const
 }
 
 // ---------------------------------------------
-uint64 T_PerfectTimer::ReadTicks() const
+uint64 PerfTimer::ReadTicks() const
 {
 	if (running)
 	{

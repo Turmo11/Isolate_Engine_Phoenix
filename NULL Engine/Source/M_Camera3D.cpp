@@ -1,3 +1,5 @@
+#include "Time.h"
+
 #include "Application.h"															// ATTENTION: Globals.h already included in Application.h.
 #include "M_Window.h"
 #include "M_Input.h"
@@ -97,7 +99,7 @@ bool M_Camera3D::SaveConfiguration(ParsonNode& root) const
 // -----------------------------------------------------------------
 UPDATE_STATUS M_Camera3D::Update(float dt)
 {
-	if (App->editor->SceneIsHovered())
+	if (App->editor->ViewportIsHovered())
 	{
 		if (!App->editor->HoveringGuizmo())
 		{
@@ -285,11 +287,11 @@ void M_Camera3D::WASDMovement()
 {
 	float3 new_position		= float3::zero;
 	Frustum frustum			= current_camera->GetFrustum();
-	float mov_speed			= movement_speed * App->GetUnpausableDt();
+	float mov_speed			= movement_speed * Time::Real::GetDt();
 	
 	if (App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_STATE::KEY_REPEAT)								// --- CAMERA MOVEMEMENT BOOST
 	{																									// 
-		mov_speed = movement_speed * 2 * App->GetUnpausableDt();										// 
+		mov_speed = movement_speed * 2 * Time::Real::GetDt();										// 
 	}																									// ---------------------------
 
 
@@ -327,67 +329,14 @@ void M_Camera3D::WASDMovement()
 
 void M_Camera3D::FreeLookAround()
 {
-	/*Frustum frustum = current_camera->GetFrustum();
-	float2 mouse_motion = App->editor->GetScreenMouseMotionThroughEditor();
-	float sensitivity = rotation_speed * App->GetDt();
-
-	float3 X = float3::zero;
-	float3 Y = float3::zero;
-	float3 Z = float3::zero;
 	
-	float3 new_Z = frustum.Pos() - reference;
-
-	if (mouse_motion.x != 0.0f)
-	{
-		X = Quat(frustum.Up(), -mouse_motion.x * sensitivity).ToEulerXYZ();
-	}
-
-	if (mouse_motion.y != 0.0f)
-	{
-		Y = Quat(frustum.WorldRight(), -mouse_motion.y * sensitivity).ToEulerXYZ();
-	}
-
-	Z = X.Cross(Y);
-
-	float3x3 rotation_matrix = float3x3(X, Y, Z);
-
-	current_camera->Rotate(rotation_matrix);*/
-	
-	// Free Look
-	/*int dx = -App->input->GetMouseXMotion();							// Motion value registered by the mouse in the X axis. Negated so the camera behaves like it should.
-	int dy = -App->input->GetMouseYMotion();							// Motion value registered by the mouse in the Y axis. Negated so the camera behaves like it should.
-
-	float sensitivity = rotation_speed * App->GetDt();					// Factor that will be applied to dx before constructing the angle with which to rotate the vectors.
-
-	if (dx != 0)														// --- 
-	{
-		float delta_X = (float)dx * sensitivity;						// The value of the angle that we will rotate the camera by is very, very small, as it will be applied each frame.
-
-		X = rotate(X, delta_X, vec3(0.0f, 1.0f, 0.0f));					// All vectors of the camera (X = Right, Y = Up, Z = Forward), will be rotated by the value of the angle (delta_X)
-		Y = rotate(Y, delta_X, vec3(0.0f, 1.0f, 0.0f));					// The axis of rotation will be Y (yaw), not to confuse with the Y vector, which belongs to the camera.
-		Z = rotate(Z, delta_X, vec3(0.0f, 1.0f, 0.0f));					// Keep in mind that X(Right) will always remain axis aligned.
-	}
-
-	if (dy != 0)														// Same as above but only affecting the Y and Z vectors, as X will act as the pivot of the rotation.
-	{
-		float delta_Y = (float)dy * sensitivity;
-
-		Y = rotate(Y, delta_Y, X);										// As stated above, X(Right) will be used as the X axis (pitch) as, even if it is rotated, it will always be perfectly
-		Z = rotate(Z, delta_Y, X);										// axis aligned in space, at least for this case.
-
-		if (Y.y < 0.0f)													// If the y component of the Y(Up) vector is negative.
-		{
-			Z = vec3(0.0f, Z.y > 0.0f ? 1.0f : -1.0f, 0.0f);			// The y component of Z(Forward) will be recalculated.
-			Y = cross(Z, X);											// A new Y(Up) vector orthogonal to both Z(Forward) and X(Right) (cross product) will be calculated.
-		}
-	}*/
 }
 
 void M_Camera3D::RotateAroundReference()								// Almost identical to FreeLookAround(), but instead of only modifying XYZ, the position of the camera is also modified.
 {	
 	Frustum frustum			= current_camera->GetFrustum();
 	float2 mouse_motion		= App->editor->GetWorldMouseMotionThroughEditor();
-	float sensitivity		= rotation_speed * App->GetDt();
+	float sensitivity		= rotation_speed * Time::Real::GetDt();
 
 	float3 new_Z = frustum.Pos() - reference;
 
@@ -419,12 +368,12 @@ void M_Camera3D::PanCamera()
 
 	if (mouse_motion.x != 0)
 	{
-		new_X = -mouse_motion.x * frustum.WorldRight() * App->GetDt();
+		new_X = -mouse_motion.x * frustum.WorldRight() * Time::Real::GetDt();
 	}
 
 	if (mouse_motion.y != 0)
 	{
-		new_Y = mouse_motion.y * frustum.Up() * App->GetDt();
+		new_Y = mouse_motion.y * frustum.Up() * Time::Real::GetDt();
 	}
 
 	new_position = new_X + new_Y;
@@ -435,7 +384,7 @@ void M_Camera3D::PanCamera()
 void M_Camera3D::Zoom()
 {	
 	Frustum frustum		= current_camera->GetFrustum();
-	float3 new_Z		= frustum.Front() * (float)App->input->GetMouseZ() * zoom_speed * App->GetDt();
+	float3 new_Z		= frustum.Front() * (float)App->input->GetMouseZ() * zoom_speed * Time::Real::GetDt();
 
 	Move(new_Z);
 }

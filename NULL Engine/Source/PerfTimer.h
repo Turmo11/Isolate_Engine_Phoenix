@@ -1,12 +1,11 @@
-#ifndef __T_PERFECT_TIMER_H__
-#define __T_PERFECT_TIMER_H__
-
+#ifndef __PERF_TIMER_H__
+#define  __PERF_TIMER_H__
 typedef unsigned __int64 uint64;
 
-class T_PerfectTimer
+class PerfTimer
 {
 public:
-	T_PerfectTimer();							// Constructor
+	PerfTimer();							// Constructor
 
 	void	Start		();
 	void	Stop		();
@@ -21,4 +20,4 @@ private:
 	static uint64	frequency;				// As the frequency will be the same across all timers, it will be declared as static.
 };
 
-#endif // !__T_PERFECT_TIMER_H__
+#endif // !__PERF_TIMER_H__

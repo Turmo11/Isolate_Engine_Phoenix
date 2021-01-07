@@ -130,9 +130,12 @@ void E_Viewport::DrawScene()
 		game_focused = false;
 	}
 
-	SetIsHovered();
-	AdaptTextureToWindowSize();
+	if (scene_focused)
+	{
+		SetIsHovered();
+	}
 
+	AdaptTextureToWindowSize();
 	DrawSceneTexture();
 
 	HandleGuizmos();
@@ -153,9 +156,12 @@ void E_Viewport::DrawGame()
 		scene_focused = false;
 	}
 
-	SetIsHovered();
-	AdaptTextureToWindowSize();
+	if (game_focused)
+	{
+		SetIsHovered();
+	}
 
+	AdaptTextureToWindowSize();
 	DrawSceneTexture();
 
 	HandleGuizmos();

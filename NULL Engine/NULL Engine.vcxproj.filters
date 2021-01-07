@@ -461,6 +461,7 @@
     </ClCompile>
     <ClCompile Include="Source\PerfTimer.cpp">
       <Filter>Source\6_Containers\Timer</Filter>
+    </ClCompile>
     <ClCompile Include="Source\E_TextEditor.cpp">
       <Filter>Source\2_Editor\Panels</Filter>
     </ClCompile>
@@ -1005,6 +1006,7 @@
     </ClInclude>
     <ClInclude Include="Source\PerfTimer.h">
       <Filter>Source\6_Containers\Timer</Filter>
+    </ClInclude>
     <ClInclude Include="Source\E_TextEditor.h">
       <Filter>Source\2_Editor\Panels</Filter>
     </ClInclude>

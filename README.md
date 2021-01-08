@@ -1,6 +1,6 @@
 # Isolate Engine Phoenix
 
-Isolate Engine Phoenix is a basic 3D Graphics Engine for game development. It has been developed by a single [Bachelor's degree in Video Game Design and Development](<https://www.citm.upc.edu/ing/estudis/graus-videojocs/>) student at [UPC CITM](<https://www.citm.upc.edu/>) [Tech Talent Center](<https://www.talent.upc.edu/cat/school/ttc/>) in Barcelona.
+Isolate Engine Phoenix is a basic 3D Graphics Engine for game development forked from NULL ENGINE by Ángel González. It has been developed by a single [Bachelor's degree in Video Game Design and Development](<https://www.citm.upc.edu/ing/estudis/graus-videojocs/>) student at [UPC CITM](<https://www.citm.upc.edu/>) [Tech Talent Center](<https://www.talent.upc.edu/cat/school/ttc/>) in Barcelona.
 
 It has been coded from scratch in C and C++ along with the following libraries:
 
@@ -192,7 +192,7 @@ No previous installation is required to use the engine, just download the latest
 
 MIT License
 
-Copyright (c) 2020 [Angel Gonzalez T.]
+Copyright (c) 2020 [Guillem Turmo & Fran Guerrero]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

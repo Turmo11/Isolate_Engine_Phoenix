@@ -128,7 +128,6 @@ void E_Project::DrawDirectoriesTree(const char* root_directory, const char* exte
 			if (ImGui::IsItemClicked())
 			{
 				sprintf_s(directory_to_display, MAX_DIRECTORY_SIZE, "%s%s", root_dir.c_str(), files[i].c_str());
-				LOG("file %s", files[i].c_str());
 			}
 			if (ImGui::IsItemHovered())
 			{

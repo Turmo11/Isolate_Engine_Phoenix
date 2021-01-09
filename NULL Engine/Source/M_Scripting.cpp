@@ -125,6 +125,13 @@ WrenForeignMethodFn BindForeignMethod(WrenVM* vm, const char* module, const char
 				return ConsoleLog;
 			}
 		}
+		if (strcmp(class_name, "Input") == 0)
+		{
+			if (!is_static && strcmp(signature, "GetKey(_,_)") == 0)
+			{
+				return GetKey;
+			}
+		}
 	}
 }
 

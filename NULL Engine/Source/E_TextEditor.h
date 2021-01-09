@@ -17,10 +17,18 @@ public:
 	bool CleanUp() override;
 
 	void InitializeTextEditor();
+	void SaveScript();
+	bool Editing();
 
 public:
-	TextEditor txt_editor;
-	std::string text_editor_file;
+
+	TextEditor script_editor;
+	std::string file_path;
+	bool editing;
+
+private:
+
+	SDL_Rect content_region;
 };
 
 #endif // !__E_TEXTEDITOR_H__

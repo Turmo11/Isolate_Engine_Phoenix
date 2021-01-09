@@ -1,4 +1,6 @@
-//Remember that constructor is mandatory
+// Remember that constructor is mandatory
+// Save test, WORKS!
+// Save test WORKS!
 
 class Engine{
 	construct new(){}
@@ -18,3 +20,8 @@ engine_instance1.Log("Yay! (child1)")
 engine_instance2.Log("Oh oh... (child2)")
 engine_instance3.Log("You should be sleeping man. (child3)")
 engine_instance4.Log("Wre-what? (child4)")
+
+
+
+
+

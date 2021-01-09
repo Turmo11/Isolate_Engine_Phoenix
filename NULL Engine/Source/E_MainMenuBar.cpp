@@ -135,6 +135,7 @@ bool E_MainMenuBar::WindowMainMenuItem()
 		ImGui::MenuItem("Hierarchy", "2", &App->editor->show_hierarchy);
 		ImGui::MenuItem("Inspector", "3", &App->editor->show_inspector);
 		ImGui::MenuItem("Console", "4", &App->editor->show_console);
+		ImGui::MenuItem("Script Editor", "5", &App->editor->show_text_editor);
 		ImGui::MenuItem("GuiDemo", "8", &App->editor->show_imgui_demo);
 		ImGui::MenuItem("About", "9", &App->editor->show_about_popup);
 

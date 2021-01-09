@@ -753,10 +753,31 @@ std::string M_FileSystem::GetFileContentAsString(const char* path)
 
 	file.open(path);
 
+	if (!file.is_open())
+	{
+		LOG("[ERROR] Could not open %s", path);
+		return "";
+	}
+
 	while (std::getline(file, line)) {
 		ret += (line + '\n');
 	}
 	file.close();
 
 	return ret;
+}
+
+void M_FileSystem::SetFileContent(const char* path, const char* new_content)
+{
+	std::ofstream file(path);
+
+	if (!file.is_open())
+	{
+		LOG("[ERROR] Could not open %s", path);
+		return;
+	}
+
+	file << new_content;
+
+	file.close();
 }

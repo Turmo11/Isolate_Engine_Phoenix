@@ -207,59 +207,76 @@ void M_Editor::AddEditorPanel(EditorPanel* panel)
 
 void M_Editor::EditorShortcuts()
 {
-	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_STATE::KEY_DOWN)
+	if (!text_editor->editing)
 	{
-		show_configuration = !show_configuration;
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_2) == KEY_STATE::KEY_DOWN)
-	{
-		show_hierarchy = !show_hierarchy;
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_3) == KEY_STATE::KEY_DOWN)
-	{
-		show_inspector = !show_inspector;
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_4) == KEY_STATE::KEY_DOWN)
-	{
-		show_console = !show_console;
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_8) == KEY_STATE::KEY_DOWN)
-	{
-		show_imgui_demo = !show_imgui_demo;
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_9) == KEY_STATE::KEY_DOWN)
-	{
-		show_about_popup = !show_about_popup;
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_STATE::KEY_DOWN)
-	{
-		if (show_about_popup || show_load_file_popup)
+		if (App->input->GetKey(SDL_SCANCODE_1) == KEY_STATE::KEY_DOWN)
 		{
-			show_about_popup		= false;
-			show_load_file_popup	= false;
-		}
-		else
-		{
-			show_close_app_popup = !show_close_app_popup;
-		}
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_LCTRL) == KEY_STATE::KEY_REPEAT)
-	{
-		if (App->input->GetKey(SDL_SCANCODE_S) == KEY_STATE::KEY_DOWN)
-		{
-			App->scene->SaveScene();
+			show_configuration = !show_configuration;
 		}
 
-		if (App->input->GetKey(SDL_SCANCODE_O) == KEY_STATE::KEY_DOWN)
+		if (App->input->GetKey(SDL_SCANCODE_2) == KEY_STATE::KEY_DOWN)
 		{
-			show_load_file_popup = true;
+			show_hierarchy = !show_hierarchy;
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_3) == KEY_STATE::KEY_DOWN)
+		{
+			show_inspector = !show_inspector;
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_4) == KEY_STATE::KEY_DOWN)
+		{
+			show_console = !show_console;
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_5) == KEY_STATE::KEY_DOWN)
+		{
+			show_text_editor = !show_text_editor;
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_8) == KEY_STATE::KEY_DOWN)
+		{
+			show_imgui_demo = !show_imgui_demo;
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_9) == KEY_STATE::KEY_DOWN)
+		{
+			show_about_popup = !show_about_popup;
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_STATE::KEY_DOWN)
+		{
+			if (show_about_popup || show_load_file_popup)
+			{
+				show_about_popup = false;
+				show_load_file_popup = false;
+			}
+			else
+			{
+				show_close_app_popup = !show_close_app_popup;
+			}
+		}
+		if (App->input->GetKey(SDL_SCANCODE_LCTRL) == KEY_STATE::KEY_REPEAT)
+		{
+			if (App->input->GetKey(SDL_SCANCODE_S) == KEY_STATE::KEY_DOWN)
+			{
+				App->scene->SaveScene();
+			}
+
+			if (App->input->GetKey(SDL_SCANCODE_O) == KEY_STATE::KEY_DOWN)
+			{
+				show_load_file_popup = true;
+			}
+		}
+	}
+	else
+	{
+		if (App->input->GetKey(SDL_SCANCODE_LCTRL) == KEY_STATE::KEY_REPEAT || App->input->GetKey(SDL_SCANCODE_RCTRL) == KEY_STATE::KEY_REPEAT)
+		{
+			if (App->input->GetKey(SDL_SCANCODE_S) == KEY_STATE::KEY_DOWN)
+			{
+				text_editor->SaveScript();
+			}
 		}
 	}
 }

@@ -8,6 +8,7 @@
 
 E_TextEditor::E_TextEditor() : EditorPanel("Console")
 {
+	file_path = "Assets/Scripts/alpha_script.wren";
 }
 
 E_TextEditor::~E_TextEditor()
@@ -18,8 +19,6 @@ void E_TextEditor::InitializeTextEditor()
 {
 	//TEXT EDITOR Initialized
 	TextEditor::LanguageDefinition lang = TextEditor::LanguageDefinition::Wren();
-
-	file_path = "Assets/Scripts/alpha_script.wren";
 
 	std::ifstream t(file_path.c_str());
 	if (t.good())
@@ -125,6 +124,12 @@ bool E_TextEditor::Editing()
 	}
 
 	return false;
+}
+
+void E_TextEditor::OpenScript(std::string script_to_open)
+{
+	file_path = ASSETS_SCRIPTS_PATH + script_to_open;
+	InitializeTextEditor();
 }
 
 

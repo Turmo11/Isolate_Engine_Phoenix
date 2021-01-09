@@ -5,8 +5,10 @@
 
 #include "Application.h"
 #include "M_FileSystem.h"
+#include "M_Editor.h"
 
 #include "E_Project.h"
+#include "E_TextEditor.h"
 
 #define MAX_DIRECTORY_SIZE 500
 
@@ -99,6 +101,7 @@ void E_Project::DrawDirectoriesTree(const char* root_directory, const char* exte
 {
 	std::vector<std::string> directories;
 	std::vector<std::string> files;
+	std::vector<std::string> file_name;
 
 	std::string root_dir = root_directory;
 
@@ -125,8 +128,15 @@ void E_Project::DrawDirectoriesTree(const char* root_directory, const char* exte
 			if (ImGui::IsItemClicked())
 			{
 				sprintf_s(directory_to_display, MAX_DIRECTORY_SIZE, "%s%s", root_dir.c_str(), files[i].c_str());
+				LOG("file %s", files[i].c_str());
 			}
-
+			if (ImGui::IsItemHovered())
+			{
+				if (ImGui::IsMouseDoubleClicked(0))
+				{
+					App->editor->text_editor->OpenScript(files[i]);
+				}
+			}
 			ImGui::TreePop();
 		}
 	}

@@ -20,6 +20,7 @@ public:
 	void SaveScript();
 	bool Editing();
 
+	void OpenScript(std::string script_to_open);
 public:
 
 	TextEditor script_editor;

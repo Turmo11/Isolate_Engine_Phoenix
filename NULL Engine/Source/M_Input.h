@@ -47,6 +47,7 @@ public:
 	int				GetMouseXWheel			() const;
 	int				GetMouseYWheel			() const;
 
+	KEY_STATE		GetStateFromInt			(int state);
 private:
 	KEY_STATE*		keyboard;
 	KEY_STATE		mouse_buttons[MAX_MOUSE_BUTTONS];

@@ -69,6 +69,7 @@ public:
 	std::string		GetFileExtension			(const char* path);																// 
 	std::string		GetFileAndExtension			(const char* path);																// 
 	std::string		GetLastDirectoryAndFile		(const char* path);																// 
+	std::string		GetFileContentAsString		(const char* path);																// Returns the content of the file as a string
 };
 
 #endif // !__M_FILE_SYSTEM_H__

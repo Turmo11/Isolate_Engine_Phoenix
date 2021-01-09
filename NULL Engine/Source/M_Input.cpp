@@ -287,3 +287,19 @@ int M_Input::GetMouseYWheel() const
 {
 	return mouse_y_wheel;
 }
+
+KEY_STATE M_Input::GetStateFromInt(int state)
+{
+	switch (state)
+	{
+	case 0:
+		return KEY_STATE::KEY_IDLE;
+	case 1:
+		return KEY_STATE::KEY_DOWN;
+	case 2:
+		return KEY_STATE::KEY_REPEAT;
+	case 3:
+		return KEY_STATE::KEY_UP;
+	}
+}
+

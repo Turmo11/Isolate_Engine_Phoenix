@@ -71,7 +71,7 @@ bool M_Scene::Start()
 	
 	CreateSceneCamera("SceneCamera");
 
-	Importer::ImportFile("Assets/Models/street/Street Environment_V01.FBX");
+	//Importer::ImportFile("Assets/Models/street/Street Environment_V01.FBX");
 	Importer::ImportFile("Assets/Models/Tank/Tank2.fbx");
 	//Importer::ImportFile("Assets/Scenes/MainScene.json");											// TMP Just to show that custom file format and serialization works.
 

@@ -498,6 +498,9 @@
     <ClCompile Include="Source\Dependencies\Wren\wren_vm.c">
       <Filter>Dependencies\Wren</Filter>
     </ClCompile>
+    <ClCompile Include="Source\M_Scripting.cpp">
+      <Filter>Source\1_Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h">
@@ -1081,6 +1084,9 @@
     </ClInclude>
     <ClInclude Include="Source\Dependencies\Wren\wren_vm.h">
       <Filter>Dependencies\Wren</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\M_Scripting.h">
+      <Filter>Source\1_Modules</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

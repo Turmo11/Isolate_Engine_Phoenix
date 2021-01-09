@@ -18,8 +18,8 @@
 #define VSYNC					false
 #define FRAMES_ARE_CAPPED		true
 
-#define VERSION					"v0.5"
-#define TITLE					"NULL Engine"
-#define ORGANIZATION			"Angel Gonzalez // UPC - CITM - TTC"
+#define VERSION					"v1.0"
+#define TITLE					"Isolate Engine Phoenix"
+#define ORGANIZATION			"Guillem Turmo - Fran Guerrero // UPC - CITM - TTC"
 
 #endif // !__CONFIGURATION_SETTINGS_H__

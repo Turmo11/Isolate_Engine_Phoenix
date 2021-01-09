@@ -5,6 +5,7 @@
 #define ASSETS_PATH				"Assets/"
 #define ASSETS_MODELS_PATH		"Assets/Models/"
 #define ASSETS_SCENES_PATH		"Assets/Scenes/"
+#define ASSETS_SCRIPTS_PATH		"Assets/Scripts/"
 #define ASSETS_TEXTURES_PATH	"Assets/Textures/"
 
 #define CONFIGURATION_PATH		"Configuration/"
@@ -18,6 +19,7 @@
 #define MODELS_PATH				"Library/Models/"
 #define PARTICLES_PATH			"Library/Particles/"
 #define SCENES_PATH				"Library/Scenes/"
+#define SCRIPTS_PATH			"Library/Scripts/"
 #define SHADERS_PATH			"Library/Shaders/"
 #define TEXTURES_PATH			"Library/Textures/"
 

@@ -117,17 +117,22 @@ void E_Console::ConsoleOutput()
 
 		if (strstr(logs[i], "[STATUS]") != nullptr)
 		{
-			text_colour = { 1.0f, 0.0f, 1.0f, 1.0f };
+			text_colour = { 1.0f, 0.0f, 1.0f, 1.0f };							// [STATUS] logs will be pink.
 		}
 
 		if (strstr(logs[i], "[IMPORTER]") != nullptr)
 		{
-			text_colour = { 0.0f, 1.0f, 1.0f, 1.0f };
+			text_colour = { 0.0f, 1.0f, 1.0f, 1.0f };							// [IMPORTER] logs will be cyan.
 		}
 
 		if (strstr(logs[i], "[SCENE]") != nullptr)
 		{
-			text_colour = { 0.0f, 1.0f, 0.0f, 1.0f };
+			text_colour = { 0.0f, 1.0f, 0.0f, 1.0f };							// [SCENE] logs will be green.
+		}
+
+		if (strstr(logs[i], "[WREN]") != nullptr)
+		{
+			text_colour = { 1.0f, 0.73f, 0.0f, 1.0f };							// [WREN] logs will be orange.
 		}
 
 		ImGui::PushStyleColor(ImGuiCol_Text, text_colour);

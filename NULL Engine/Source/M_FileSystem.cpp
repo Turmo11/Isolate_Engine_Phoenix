@@ -744,3 +744,19 @@ std::string M_FileSystem::GetLastDirectoryAndFile(const char* path)
 
 	return (last_dir + file);
 }
+
+std::string M_FileSystem::GetFileContentAsString(const char* path) 
+{
+	std::ifstream file;
+	std::string line;
+	std::string ret;
+
+	file.open(path);
+
+	while (std::getline(file, line)) {
+		ret += (line + '\n');
+	}
+	file.close();
+
+	return ret;
+}

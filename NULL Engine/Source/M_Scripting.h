@@ -5,6 +5,7 @@
 
 class ParsonNode;
 struct WrenVM;																																			// Contains the different wren objects
+struct WrenHandle;
 
 class M_Scripting : public Module
 {
@@ -13,22 +14,29 @@ public:
 	M_Scripting(bool is_active = true);
 	~M_Scripting();
 
-	bool					Init					(ParsonNode& config)	override;																	// Initializes and creates the Wren Virtual Machine
-	UPDATE_STATUS			PreUpdate				(float dt)				override;
-	UPDATE_STATUS			Update					(float dt)				override;
-	UPDATE_STATUS			PostUpdate				(float dt)				override;
-	bool					CleanUp					()						override;
+	bool						Init					(ParsonNode& config)	override;																	// Initializes and creates the Wren Virtual Machine
+	UPDATE_STATUS				PreUpdate				(float dt)				override;
+	UPDATE_STATUS				Update					(float dt)				override;
+	UPDATE_STATUS				PostUpdate				(float dt)				override;
+	bool						CleanUp					()						override;
 
-	bool					LoadConfiguration		(ParsonNode& root)		override;
-	bool					SaveConfiguration		(ParsonNode& root)		const override;
+	bool						LoadConfiguration		(ParsonNode& root)		override;
+	bool						SaveConfiguration		(ParsonNode& root)		const override;
 
-public:
+	bool						InterpretModule			(const char* module, const char* content);
+	WrenHandle*					SetClassHandle		(const char* module, const char* class_name);
+	std::vector<std::string>	GetMethodsFromClass		(WrenHandle* w_class);
+	void						ReleaseHandle			(WrenHandle* handle_to_release);
 
-	//We'll try using the naming already established in Wren to avoid confusion, however we will still try to keep the naming conventions
-	
 private:
 
 	WrenVM* virtual_machine;
+
+	// Global signatures
+	WrenHandle* start_signature = nullptr;
+	WrenHandle* update_signature = nullptr;
+
+	WrenHandle* test_class = nullptr;
 };
 
 

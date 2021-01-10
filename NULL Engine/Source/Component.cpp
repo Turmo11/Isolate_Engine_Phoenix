@@ -51,6 +51,7 @@ const char* Component::GetNameFromType() const
 	case COMPONENT_TYPE::MATERIAL:		{ return "Material"; }		break;
 	case COMPONENT_TYPE::LIGHT:			{ return "Light"; }			break;
 	case COMPONENT_TYPE::CAMERA:		{ return "Camera"; }		break;
+	case COMPONENT_TYPE::SCRIPT:		{ return "Script"; }		break;
 	}
 
 	return "NONE";

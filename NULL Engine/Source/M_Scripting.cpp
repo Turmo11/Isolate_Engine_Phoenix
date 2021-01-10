@@ -36,9 +36,15 @@ bool M_Scripting::Init(ParsonNode& config)
 	wren_config.errorFn = Error;
 
 	virtual_machine = wrenNewVM(&wren_config);
-
 	std::string wren_script = App->file_system->GetFileContentAsString("Assets/Scripts/alpha_script.wren"); // Manually loading test script
-	WrenInterpretResult result = wrenInterpret(virtual_machine, "console_test", wren_script.c_str());		// Interpreting Wren code
+
+	InterpretModule("console_test", wren_script.c_str());													// Interpreting Wren code
+	
+																											//start_signature = wrenMakeCallHandle(virtual_machine, "Start()");
+	update_signature = wrenMakeCallHandle(virtual_machine, "Update()");
+	test_class = SetClassHandle("console_test", "Move");
+
+	GetMethodsFromClass(test_class);
 
 	return true;
 }
@@ -50,6 +56,11 @@ UPDATE_STATUS M_Scripting::PreUpdate(float dt)
 
 UPDATE_STATUS M_Scripting::Update(float dt)
 {
+	if (App->input->GetKey(SDL_SCANCODE_G) == KEY_STATE::KEY_REPEAT)
+	{
+		wrenSetSlotHandle(virtual_machine, 0, test_class);
+		wrenCall(virtual_machine, update_signature);
+	}
 	return UPDATE_STATUS::CONTINUE;
 }
 
@@ -60,6 +71,8 @@ UPDATE_STATUS M_Scripting::PostUpdate(float dt)
 
 bool M_Scripting::CleanUp()
 {
+	wrenReleaseHandle(virtual_machine, update_signature);
+	wrenReleaseHandle(virtual_machine, test_class);
 	wrenFreeVM(virtual_machine);
 	return true;
 }
@@ -84,8 +97,9 @@ bool M_Scripting::SaveConfiguration(ParsonNode& root) const
 void ConsoleLog(WrenVM* vm)																// Logs message to the console
 {
 	const char* message = wrenGetSlotString(vm, 1);
-
-	LOG("[WREN] LOG: %s", message);														 
+	static int count = 1;
+	LOG("[WREN] LOG(%d): %s", count, message);		
+	count++;
 }
 
 void GetKey(WrenVM* vm)
@@ -98,7 +112,7 @@ void GetKey(WrenVM* vm)
 	wrenSetSlotBool(vm, 0, pressed);
 }
 
-// --- CALLBACKS FROM WREN 
+// --- CALLBACKS FROM WREN ---
 
 WrenForeignClassMethods BindForeignClass(WrenVM* vm, const char* module, const char* class_name)
 {
@@ -155,4 +169,44 @@ void Write(WrenVM* vm, const char* text)
 char* LoadModule(WrenVM* vm, const char* name) 
 { 
 	return nullptr;
+}
+
+// --- WREN VM METHODS ---
+
+bool M_Scripting::InterpretModule(const char* module, const char* code)
+{
+	return (wrenInterpret(virtual_machine, module, code) == WREN_RESULT_SUCCESS);
+}
+
+WrenHandle* M_Scripting::SetClassHandle(const char* module, const char* class_name) 
+{
+	wrenEnsureSlots(virtual_machine, 1);
+	wrenGetVariable(virtual_machine, module, class_name, 0);
+
+	return wrenGetSlotHandle(virtual_machine, 0);
+}
+
+std::vector<std::string> M_Scripting::GetMethodsFromClass(WrenHandle* wrenClass) {
+
+	if (!IS_CLASS(wrenClass->value)) {
+		LOG("[WARNING] Trying to get methods from a non class handler");
+		return std::vector<std::string>(); // return empty string
+	}
+
+	std::vector<std::string> ret;
+	ObjClass* wren_class = AS_CLASS(wrenClass->value);
+	LOG("%.*s\n", wren_class->name->length, wren_class->name->value);
+	for (int i = 0; i < wren_class->methods.count; ++i) {
+		Method& method = wren_class->methods.data[i];
+		if (method.type != METHOD_PRIMITIVE && method.type != METHOD_NONE) {
+			ret.push_back(method.as.closure->fn->debug->name);
+		}
+	}
+
+	return ret;
+
+}
+void M_Scripting::ReleaseHandle(WrenHandle* handle_to_release)
+{
+	wrenReleaseHandle(virtual_machine, handle_to_release);
 }

@@ -26,15 +26,22 @@ public:
 
 	ImportedVariable(WrenDataType type, const char* name, void* value, WrenHandle* getter);
 
-	Value value;										// Variable value
-	std::string var_name;									// Variable name
-	WrenDataType data_type = WrenDataType::UNKNOWN;		// Variable type (bool/number/string)
+	Value value;													// Variable value
+	std::string var_name;											// Variable name
+	WrenDataType data_type = WrenDataType::UNKNOWN;					// Variable type (bool/number/string)
 
-	bool is_public;										// True if the variable accessibility is set to public
-
-	WrenHandle* var_handle = nullptr;						// Reference to the getter object
+	WrenHandle* var_handle = nullptr;								// Reference to the getter object
 	
-	bool			IsPublic() { return is_public; }
+	bool			IsPublic	() { return is_public; }
+	bool			IsTypeCasted	() { return casted_type; }
+
+	void*			GetValue();
+	void			SetValue	(Value new_value, WrenDataType value_type);
+
+private:
+
+	bool is_public;													// True if the variable accessibility is set to public
+	bool casted_type;												// True if the variable type is beign casted
 };
 
 
@@ -72,6 +79,7 @@ public:
 
 	~ImportedScript();
 
+	SCRIPT_STATUS GetState() { return script_state; }
 private:
 
 	std::string class_name;
@@ -82,8 +90,7 @@ private:
 	std::vector<ImportedVariable> variables;
 	std::vector<ImportedMethod> methods;
 
-public:
-
-	SCRIPT_STATUS GetState() { return script_state; }
+	
+	
 };
 

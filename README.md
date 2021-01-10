@@ -59,7 +59,21 @@ Guillem Turmo
 * Mouse Picking through Raycasting.
 * Editor Gizmos that allow to manipulation of the selected GameObject.
 
+**As of 13/12/2020:**
 
+* TimeManagement
+* Scene Save/Load when Play/Stop
+* Wren Scripting System
+    * Interpret Wren Scripts
+    * Execute Basic Functionality on Play
+    * Load Scripts from Asset Window
+    * Edit & Save scripts on runtime
+    * Compile scripts without having to re-compile th engine
+* Text Editor
+    * Open Scripts from Asset Window
+    * KeyShortcuts unabled while editing
+    * Select Format Options 
+* Scene and GameObject Serialization.
 
 ****
 
@@ -95,7 +109,7 @@ Guillem Turmo
 
   ****
 
-* **Console Panel: ** Placed at the bottom of the window. It outputs information about the state of the engine: Loading&Saving, Importing models and textures...
+* **Console Panel:** Placed at the bottom of the window. It outputs information about the state of the engine: Loading&Saving, Importing models and textures...
 
   ---
 

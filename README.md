@@ -59,7 +59,7 @@ Guillem Turmo
 * Mouse Picking through Raycasting.
 * Editor Gizmos that allow to manipulation of the selected GameObject.
 
-**As of 13/12/2020:**
+**As of 10/01/2021:**
 
 * TimeManagement
 * Scene Save/Load when Play/Stop

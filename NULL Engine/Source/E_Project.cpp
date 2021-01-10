@@ -133,6 +133,7 @@ void E_Project::DrawDirectoriesTree(const char* root_directory, const char* exte
 			{
 				if (ImGui::IsMouseDoubleClicked(0))
 				{
+					App->editor->text_editor->SaveScript();
 					App->editor->text_editor->OpenScript(files[i]);
 				}
 			}

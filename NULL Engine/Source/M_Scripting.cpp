@@ -27,38 +27,23 @@ M_Scripting::~M_Scripting()
 
 bool M_Scripting::Init(ParsonNode& config)
 {
-	WrenConfiguration wren_config;
-	wrenInitConfiguration(&wren_config);
 
-	wren_config.bindForeignClassFn = BindForeignClass;
-	wren_config.bindForeignMethodFn = BindForeignMethod;
-	wren_config.writeFn = Write;
-	wren_config.errorFn = Error;
-
-	virtual_machine = wrenNewVM(&wren_config);
-	std::string wren_script = App->file_system->GetFileContentAsString("Assets/Scripts/alpha_script.wren"); // Manually loading test script
-
-	InterpretModule("console_test", wren_script.c_str());													// Interpreting Wren code
-	
-																											//start_signature = wrenMakeCallHandle(virtual_machine, "Start()");
-	update_signature = wrenMakeCallHandle(virtual_machine, "Update()");
-	test_class = SetClassHandle("console_test", "Move");
-
-	GetMethodsFromClass(test_class);
+	LoadScript("Assets/Scripts/Move.wren"); 
 
 	return true;
 }
 
 UPDATE_STATUS M_Scripting::PreUpdate(float dt)
 {
+	playing = App->play;
 	return UPDATE_STATUS::CONTINUE;
 }
 
 UPDATE_STATUS M_Scripting::Update(float dt)
 {
-	if (App->input->GetKey(SDL_SCANCODE_G) == KEY_STATE::KEY_REPEAT)
+	if (playing)
 	{
-		wrenSetSlotHandle(virtual_machine, 0, test_class);
+		wrenSetSlotHandle(virtual_machine, 0, wren_class);
 		wrenCall(virtual_machine, update_signature);
 	}
 	return UPDATE_STATUS::CONTINUE;
@@ -72,7 +57,7 @@ UPDATE_STATUS M_Scripting::PostUpdate(float dt)
 bool M_Scripting::CleanUp()
 {
 	wrenReleaseHandle(virtual_machine, update_signature);
-	wrenReleaseHandle(virtual_machine, test_class);
+	wrenReleaseHandle(virtual_machine, wren_class);
 	wrenFreeVM(virtual_machine);
 	return true;
 }
@@ -126,7 +111,7 @@ WrenForeignClassMethods BindForeignClass(WrenVM* vm, const char* module, const c
 
 WrenForeignMethodFn BindForeignMethod(WrenVM* vm, const char* module, const char* class_name, bool is_static, const char* signature) { // Wren foraign methods
 
-	if (strcmp(module, "console_test") == 0) //Testing purposes
+	if (strcmp(module, "console_test") == 0)
 	{
 		if (strcmp(class_name, "Engine") == 0)
 		{
@@ -172,6 +157,29 @@ char* LoadModule(WrenVM* vm, const char* name)
 }
 
 // --- WREN VM METHODS ---
+
+void M_Scripting::LoadScript(const char* path)
+{
+	WrenConfiguration wren_config;
+	wrenInitConfiguration(&wren_config);
+
+	wren_config.bindForeignClassFn = BindForeignClass;
+	wren_config.bindForeignMethodFn = BindForeignMethod;
+	wren_config.writeFn = Write;
+	wren_config.errorFn = Error;
+
+	virtual_machine = wrenNewVM(&wren_config);
+	std::string wren_script = App->file_system->GetFileContentAsString(path); // Manually loading test script
+	std::string file_name = App->file_system->GetFileName(path);																									//start_signature = wrenMakeCallHandle(virtual_machine, "Start()");
+
+	InterpretModule("console_test", wren_script.c_str());													// Interpreting Wren code
+
+	update_signature = wrenMakeCallHandle(virtual_machine, "Update()");
+	wren_class = SetClassHandle("console_test", file_name.c_str());
+
+	GetMethodsFromClass(wren_class);
+	LOG("[WREN] Loaded %s script", file_name.c_str());
+}
 
 bool M_Scripting::InterpretModule(const char* module, const char* code)
 {

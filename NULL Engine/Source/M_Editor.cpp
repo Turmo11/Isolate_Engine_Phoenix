@@ -10,6 +10,7 @@
 #include "M_Input.h"
 #include "M_Scene.h"
 #include "M_FileSystem.h"
+#include "M_Scripting.h"
 
 #include "Importer.h"
 
@@ -276,6 +277,7 @@ void M_Editor::EditorShortcuts()
 			if (App->input->GetKey(SDL_SCANCODE_S) == KEY_STATE::KEY_DOWN)
 			{
 				text_editor->SaveScript();
+				App->scripting->LoadScript(App->editor->text_editor->file_path.c_str());
 			}
 		}
 	}

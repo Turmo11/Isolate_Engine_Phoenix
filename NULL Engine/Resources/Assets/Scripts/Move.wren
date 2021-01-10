@@ -6,9 +6,19 @@ class Engine{
 
 class Move{
 	static Update(){
-		Engine.Log("Hello world from a wren function")
+		Engine.Log("Updating Move code")
 	}
 }
+
+
+
+
+
+
+
+
+
+
 
 
 

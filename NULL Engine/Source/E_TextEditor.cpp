@@ -2,13 +2,14 @@
 #include "Application.h"
 #include "M_Editor.h"
 #include "M_FileSystem.h"
+#include "M_Scripting.h"
 
 #include "E_TextEditor.h"
 
 
 E_TextEditor::E_TextEditor() : EditorPanel("Console")
 {
-	file_path = "Assets/Scripts/alpha_script.wren";
+	file_path = "Assets/Scripts/Move.wren";
 }
 
 E_TextEditor::~E_TextEditor()
@@ -106,6 +107,7 @@ void E_TextEditor::SaveScript()
 	LOG("[WREN] Saving %s script", file_path.c_str());
 	std::string content = script_editor.GetText();
 	App->file_system->SetFileContent(file_path.c_str(), content.c_str());
+	App->scripting->LoadScript(file_path.c_str());
 }
 
 bool E_TextEditor::Editing()
@@ -130,6 +132,7 @@ void E_TextEditor::OpenScript(std::string script_to_open)
 {
 	file_path = ASSETS_SCRIPTS_PATH + script_to_open;
 	InitializeTextEditor();
+	App->scripting->LoadScript(file_path.c_str());
 }
 
 

@@ -28,6 +28,7 @@
 #define MATERIALS_EXTENSION		".nemat"
 #define SCENES_EXTENSION		".nescene"
 #define TEXTURES_EXTENSION		".netex"
+#define SCRIPTS_EXTENSION		".wren"
 
 #define META_EXTENSION			".meta"
 

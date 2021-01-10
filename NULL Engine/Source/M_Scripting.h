@@ -23,10 +23,17 @@ public:
 	bool						LoadConfiguration		(ParsonNode& root)		override;
 	bool						SaveConfiguration		(ParsonNode& root)		const override;
 
+	void						LoadScript				(const char* path);
+
 	bool						InterpretModule			(const char* module, const char* content);
-	WrenHandle*					SetClassHandle		(const char* module, const char* class_name);
+	WrenHandle*					SetClassHandle			(const char* module, const char* class_name);
 	std::vector<std::string>	GetMethodsFromClass		(WrenHandle* w_class);
 	void						ReleaseHandle			(WrenHandle* handle_to_release);
+
+
+public:
+
+	bool playing;
 
 private:
 
@@ -36,7 +43,7 @@ private:
 	WrenHandle* start_signature = nullptr;
 	WrenHandle* update_signature = nullptr;
 
-	WrenHandle* test_class = nullptr;
+	WrenHandle* wren_class = nullptr;
 };
 
 

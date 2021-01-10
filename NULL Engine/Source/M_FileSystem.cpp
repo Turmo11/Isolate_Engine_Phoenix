@@ -671,6 +671,50 @@ std::string M_FileSystem::GetLastDirectory(const char* path)
 	return last_dir;
 }
 
+std::string M_FileSystem::GetFileName(const char* path)
+{
+	std::string full_path = path;
+	std::string file_and_ext = "";
+	std::string extension = "";															// Just for safety check purposes.
+	std::string file_name = "";
+
+	full_path = NormalizePath(full_path.c_str());											// Will swap all '\\' for '/'.														
+
+	size_t file_start = full_path.find_last_of("/");									// Gets the position of the last '/' of the string. Returns npos if none was found.
+	if (file_start != std::string::npos)
+	{
+		file_and_ext = full_path.substr(file_start + 1, full_path.size());							// Will get the string past the last slash
+		size_t extension_start = file_and_ext.find_last_of(".");									// Gets the position of the last '.' of the string. Returns npos if none was found.
+		
+		if (extension_start != std::string::npos)
+		{
+			extension = file_and_ext.substr(extension_start + 1, file_and_ext.size());				// Will get the string past the last dot of the path string. Ex: File.ext --> ext
+		
+			if (extension == "")
+			{
+				LOG("[WARNING] Path %s does not have any file extension!", path);
+			}
+			else
+			{
+				//file_name = file_and_ext.substr(extension.size(), extension_start + 1);
+				file_name = file_and_ext.erase(extension_start, extension.size() + 1);
+			}
+		}
+	}
+	else
+	{
+		LOG("[WARNING] Path %s does not have any file!", path);
+	}
+
+	
+
+	full_path.clear();
+	file_and_ext.clear();
+	extension.clear();
+
+	return file_name;
+}
+
 std::string M_FileSystem::GetFileExtension(const char* path)
 {
 	std::string full_path = path;

@@ -1,8 +1,8 @@
 {
     "Game Objects": [
         {
-            "UID": 2128218211,
-            "ParentUID": 2024430748,
+            "UID": 2007407637,
+            "ParentUID": 982129286,
             "Name": "MainScene",
             "IsActive": true,
             "IsStatic": false,
@@ -31,8 +31,8 @@
             ]
         },
         {
-            "UID": 964387884,
-            "ParentUID": 2128218211,
+            "UID": 408082098,
+            "ParentUID": 2007407637,
             "Name": "SceneCamera",
             "IsActive": true,
             "IsStatic": false,
@@ -69,8 +69,8 @@
             ]
         },
         {
-            "UID": 1510024357,
-            "ParentUID": 2128218211,
+            "UID": 1373733011,
+            "ParentUID": 2007407637,
             "Name": "Tank2.fbx",
             "IsActive": true,
             "IsStatic": false,
@@ -99,8 +99,8 @@
             ]
         },
         {
-            "UID": 1646237530,
-            "ParentUID": 1510024357,
+            "UID": 1106892327,
+            "ParentUID": 1373733011,
             "Name": "Tank",
             "IsActive": true,
             "IsStatic": false,
@@ -129,8 +129,8 @@
             ]
         },
         {
-            "UID": 1720726108,
-            "ParentUID": 1646237530,
+            "UID": 1563468242,
+            "ParentUID": 1106892327,
             "Name": "TankRenderers",
             "IsActive": true,
             "IsStatic": false,
@@ -159,8 +159,8 @@
             ]
         },
         {
-            "UID": 612377789,
-            "ParentUID": 1720726108,
+            "UID": 700876118,
+            "ParentUID": 1563468242,
             "Name": "TankChassis001",
             "IsActive": true,
             "IsStatic": false,
@@ -188,44 +188,44 @@
                 },
                 {
                     "Type": 2,
-                    "UID": 355608068,
+                    "UID": 1181048281,
                     "Name": "TankChassis001.nemesh",
-                    "Path": "Library\/Meshes\/355608068.nemesh",
-                    "File": "355608068.nemesh",
+                    "Path": "Library\/Meshes\/1181048281.nemesh",
+                    "File": "1181048281.nemesh",
                     "ShowWireframe": false,
                     "ShowBoundingBox": false
                 },
                 {
                     "Type": 3,
                     "Material": {
-                        "UID": 2146292452,
-                        "Path": "Library\/Materials\/2146292452.nemat",
-                        "File": "2146292452.nemat"
+                        "UID": 1813839541,
+                        "Path": "Library\/Materials\/1813839541.nemat",
+                        "File": "1813839541.nemat"
                     }
                 },
                 {
                     "Type": 2,
-                    "UID": 1337498523,
+                    "UID": 102140376,
                     "Name": "TankChassis001.nemesh",
-                    "Path": "Library\/Meshes\/1337498523.nemesh",
-                    "File": "1337498523.nemesh",
+                    "Path": "Library\/Meshes\/102140376.nemesh",
+                    "File": "102140376.nemesh",
                     "ShowWireframe": false,
                     "ShowBoundingBox": false
                 },
                 {
                     "Type": 2,
-                    "UID": 1805829026,
+                    "UID": 1525011155,
                     "Name": "TankChassis001.nemesh",
-                    "Path": "Library\/Meshes\/1805829026.nemesh",
-                    "File": "1805829026.nemesh",
+                    "Path": "Library\/Meshes\/1525011155.nemesh",
+                    "File": "1525011155.nemesh",
                     "ShowWireframe": false,
                     "ShowBoundingBox": false
                 }
             ]
         },
         {
-            "UID": 522349337,
-            "ParentUID": 1720726108,
+            "UID": 438294289,
+            "ParentUID": 1563468242,
             "Name": "TankTracksLeft001",
             "IsActive": true,
             "IsStatic": false,
@@ -253,35 +253,35 @@
                 },
                 {
                     "Type": 2,
-                    "UID": 790775092,
+                    "UID": 30827878,
                     "Name": "TankTracksLeft001.nemesh",
-                    "Path": "Library\/Meshes\/790775092.nemesh",
-                    "File": "790775092.nemesh",
+                    "Path": "Library\/Meshes\/30827878.nemesh",
+                    "File": "30827878.nemesh",
                     "ShowWireframe": false,
                     "ShowBoundingBox": false
                 },
                 {
                     "Type": 3,
                     "Material": {
-                        "UID": 1408629374,
-                        "Path": "Library\/Materials\/1408629374.nemat",
-                        "File": "1408629374.nemat"
+                        "UID": 105605185,
+                        "Path": "Library\/Materials\/105605185.nemat",
+                        "File": "105605185.nemat"
                     }
                 },
                 {
                     "Type": 2,
-                    "UID": 1419379086,
+                    "UID": 921451479,
                     "Name": "TankTracksLeft001.nemesh",
-                    "Path": "Library\/Meshes\/1419379086.nemesh",
-                    "File": "1419379086.nemesh",
+                    "Path": "Library\/Meshes\/921451479.nemesh",
+                    "File": "921451479.nemesh",
                     "ShowWireframe": false,
                     "ShowBoundingBox": false
                 }
             ]
         },
         {
-            "UID": 651664680,
-            "ParentUID": 1720726108,
+            "UID": 1850692358,
+            "ParentUID": 1563468242,
             "Name": "TankTracksRight001",
             "IsActive": true,
             "IsStatic": false,
@@ -309,35 +309,35 @@
                 },
                 {
                     "Type": 2,
-                    "UID": 1645084929,
+                    "UID": 768406199,
                     "Name": "TankTracksRight001.nemesh",
-                    "Path": "Library\/Meshes\/1645084929.nemesh",
-                    "File": "1645084929.nemesh",
+                    "Path": "Library\/Meshes\/768406199.nemesh",
+                    "File": "768406199.nemesh",
                     "ShowWireframe": false,
                     "ShowBoundingBox": false
                 },
                 {
                     "Type": 3,
                     "Material": {
-                        "UID": 2138624012,
-                        "Path": "Library\/Materials\/2138624012.nemat",
-                        "File": "2138624012.nemat"
+                        "UID": 2060023678,
+                        "Path": "Library\/Materials\/2060023678.nemat",
+                        "File": "2060023678.nemat"
                     }
                 },
                 {
                     "Type": 2,
-                    "UID": 1038374085,
+                    "UID": 634448179,
                     "Name": "TankTracksRight001.nemesh",
-                    "Path": "Library\/Meshes\/1038374085.nemesh",
-                    "File": "1038374085.nemesh",
+                    "Path": "Library\/Meshes\/634448179.nemesh",
+                    "File": "634448179.nemesh",
                     "ShowWireframe": false,
                     "ShowBoundingBox": false
                 }
             ]
         },
         {
-            "UID": 545983495,
-            "ParentUID": 1720726108,
+            "UID": 531166064,
+            "ParentUID": 1563468242,
             "Name": "TankTurret001",
             "IsActive": true,
             "IsStatic": false,
@@ -365,27 +365,27 @@
                 },
                 {
                     "Type": 2,
-                    "UID": 1493765937,
+                    "UID": 1945550230,
                     "Name": "TankTurret001.nemesh",
-                    "Path": "Library\/Meshes\/1493765937.nemesh",
-                    "File": "1493765937.nemesh",
+                    "Path": "Library\/Meshes\/1945550230.nemesh",
+                    "File": "1945550230.nemesh",
                     "ShowWireframe": false,
                     "ShowBoundingBox": false
                 },
                 {
                     "Type": 3,
                     "Material": {
-                        "UID": 1814364259,
-                        "Path": "Library\/Materials\/1814364259.nemat",
-                        "File": "1814364259.nemat"
+                        "UID": 466306835,
+                        "Path": "Library\/Materials\/466306835.nemat",
+                        "File": "466306835.nemat"
                     }
                 },
                 {
                     "Type": 2,
-                    "UID": 1761510157,
+                    "UID": 1055029965,
                     "Name": "TankTurret001.nemesh",
-                    "Path": "Library\/Meshes\/1761510157.nemesh",
-                    "File": "1761510157.nemesh",
+                    "Path": "Library\/Meshes\/1055029965.nemesh",
+                    "File": "1055029965.nemesh",
                     "ShowWireframe": false,
                     "ShowBoundingBox": false
                 }

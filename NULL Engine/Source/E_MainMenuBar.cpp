@@ -129,7 +129,7 @@ bool E_MainMenuBar::WindowMainMenuItem()
 {
 	bool ret = true;
 
-	if (ImGui::BeginMenu("Window"))
+	if (ImGui::BeginMenu("View"))
 	{
 		ImGui::MenuItem("Configuration", "1", &App->editor->show_configuration);
 		ImGui::MenuItem("Hierarchy", "2", &App->editor->show_hierarchy);
@@ -149,7 +149,7 @@ bool E_MainMenuBar::ViewMainMenuItem()
 {
 	bool ret = true;
 
-	if (ImGui::BeginMenu("View"))
+	if (ImGui::BeginMenu("Show"))
 	{
 		bool show_grid = App->editor->GetShowWorldGrid();
 		ImGui::MenuItem("World Grid", "F1", &show_grid);

@@ -1,12 +1,12 @@
 {
     "Game Objects": [
         {
-            "UID": 18691198,
-            "ParentUID": 1969957330,
-            "Name": "Tank2.fbx",
+            "UID": 2128218211,
+            "ParentUID": 2024430748,
+            "Name": "MainScene",
             "IsActive": true,
             "IsStatic": false,
-            "IsSceneRoot": false,
+            "IsSceneRoot": true,
             "ShowBoundingBoxes": false,
             "Components": [
                 {
@@ -31,215 +31,8 @@
             ]
         },
         {
-            "UID": 475024382,
-            "ParentUID": 18691198,
-            "Name": "Tank",
-            "IsActive": true,
-            "IsStatic": false,
-            "IsSceneRoot": false,
-            "ShowBoundingBoxes": false,
-            "Components": [
-                {
-                    "Type": 1,
-                    "LocalPosition": [
-                        -12.447021484375,
-                        0,
-                        22.132049560546875
-                    ],
-                    "LocalRotation": [
-                        0,
-                        0,
-                        0,
-                        1
-                    ],
-                    "LocalScale": [
-                        1,
-                        1,
-                        1
-                    ]
-                }
-            ]
-        },
-        {
-            "UID": 509208102,
-            "ParentUID": 1871366930,
-            "Name": "TankTracksLeft001",
-            "IsActive": true,
-            "IsStatic": false,
-            "IsSceneRoot": false,
-            "ShowBoundingBoxes": false,
-            "Components": [
-                {
-                    "Type": 1,
-                    "LocalPosition": [
-                        12.534276962280273,
-                        -0.080466687679290771,
-                        -22.075138092041016
-                    ],
-                    "LocalRotation": [
-                        0,
-                        0,
-                        0,
-                        1
-                    ],
-                    "LocalScale": [
-                        0.012918000109493732,
-                        0.012918000109493732,
-                        0.012918000109493732
-                    ]
-                },
-                {
-                    "Type": 2,
-                    "UID": 524744394,
-                    "Name": "TankTracksLeft001.nemesh",
-                    "Path": "Library\/Meshes\/524744394.nemesh",
-                    "File": "524744394.nemesh",
-                    "ShowWireframe": false,
-                    "ShowBoundingBox": false
-                },
-                {
-                    "Type": 3,
-                    "Material": {
-                        "UID": 1349609622,
-                        "Path": "Library\/Materials\/1349609622.nemat",
-                        "File": "1349609622.nemat"
-                    }
-                },
-                {
-                    "Type": 2,
-                    "UID": 338772639,
-                    "Name": "TankTracksLeft001.nemesh",
-                    "Path": "Library\/Meshes\/338772639.nemesh",
-                    "File": "338772639.nemesh",
-                    "ShowWireframe": false,
-                    "ShowBoundingBox": false
-                }
-            ]
-        },
-        {
-            "UID": 626072231,
-            "ParentUID": 1871366930,
-            "Name": "TankTracksRight001",
-            "IsActive": true,
-            "IsStatic": false,
-            "IsSceneRoot": false,
-            "ShowBoundingBoxes": false,
-            "Components": [
-                {
-                    "Type": 1,
-                    "LocalPosition": [
-                        12.534276962280273,
-                        -0.080466687679290771,
-                        -22.075138092041016
-                    ],
-                    "LocalRotation": [
-                        0,
-                        0,
-                        0,
-                        1
-                    ],
-                    "LocalScale": [
-                        0.012918000109493732,
-                        0.012918000109493732,
-                        0.012918000109493732
-                    ]
-                },
-                {
-                    "Type": 2,
-                    "UID": 797984432,
-                    "Name": "TankTracksRight001.nemesh",
-                    "Path": "Library\/Meshes\/797984432.nemesh",
-                    "File": "797984432.nemesh",
-                    "ShowWireframe": false,
-                    "ShowBoundingBox": false
-                },
-                {
-                    "Type": 3,
-                    "Material": {
-                        "UID": 574257502,
-                        "Path": "Library\/Materials\/574257502.nemat",
-                        "File": "574257502.nemat"
-                    }
-                },
-                {
-                    "Type": 2,
-                    "UID": 1984903914,
-                    "Name": "TankTracksRight001.nemesh",
-                    "Path": "Library\/Meshes\/1984903914.nemesh",
-                    "File": "1984903914.nemesh",
-                    "ShowWireframe": false,
-                    "ShowBoundingBox": false
-                }
-            ]
-        },
-        {
-            "UID": 999832531,
-            "ParentUID": 1871366930,
-            "Name": "TankChassis001",
-            "IsActive": true,
-            "IsStatic": false,
-            "IsSceneRoot": false,
-            "ShowBoundingBoxes": false,
-            "Components": [
-                {
-                    "Type": 1,
-                    "LocalPosition": [
-                        12.534276962280273,
-                        -0.080467045307159424,
-                        -22.075138092041016
-                    ],
-                    "LocalRotation": [
-                        0,
-                        0,
-                        0,
-                        1
-                    ],
-                    "LocalScale": [
-                        0.012918000109493732,
-                        0.012918000109493732,
-                        0.012918000109493732
-                    ]
-                },
-                {
-                    "Type": 2,
-                    "UID": 1846737913,
-                    "Name": "TankChassis001.nemesh",
-                    "Path": "Library\/Meshes\/1846737913.nemesh",
-                    "File": "1846737913.nemesh",
-                    "ShowWireframe": false,
-                    "ShowBoundingBox": false
-                },
-                {
-                    "Type": 3,
-                    "Material": {
-                        "UID": 1452243979,
-                        "Path": "Library\/Materials\/1452243979.nemat",
-                        "File": "1452243979.nemat"
-                    }
-                },
-                {
-                    "Type": 2,
-                    "UID": 534395955,
-                    "Name": "TankChassis001.nemesh",
-                    "Path": "Library\/Meshes\/534395955.nemesh",
-                    "File": "534395955.nemesh",
-                    "ShowWireframe": false,
-                    "ShowBoundingBox": false
-                },
-                {
-                    "Type": 2,
-                    "UID": 1275288483,
-                    "Name": "TankChassis001.nemesh",
-                    "Path": "Library\/Meshes\/1275288483.nemesh",
-                    "File": "1275288483.nemesh",
-                    "ShowWireframe": false,
-                    "ShowBoundingBox": false
-                }
-            ]
-        },
-        {
-            "UID": 1273254290,
-            "ParentUID": 1969957330,
+            "UID": 964387884,
+            "ParentUID": 2128218211,
             "Name": "SceneCamera",
             "IsActive": true,
             "IsStatic": false,
@@ -276,9 +69,9 @@
             ]
         },
         {
-            "UID": 1610252067,
-            "ParentUID": 1871366930,
-            "Name": "TankTurret001",
+            "UID": 1510024357,
+            "ParentUID": 2128218211,
+            "Name": "Tank2.fbx",
             "IsActive": true,
             "IsStatic": false,
             "IsSceneRoot": false,
@@ -287,9 +80,9 @@
                 {
                     "Type": 1,
                     "LocalPosition": [
-                        12.534275054931641,
-                        -0.08046412467956543,
-                        -22.075136184692383
+                        0,
+                        0,
+                        0
                     ],
                     "LocalRotation": [
                         0,
@@ -298,42 +91,46 @@
                         1
                     ],
                     "LocalScale": [
-                        0.012918000109493732,
-                        0.012918000109493732,
-                        0.012918000109493732
+                        1,
+                        1,
+                        1
                     ]
-                },
-                {
-                    "Type": 2,
-                    "UID": 1563821045,
-                    "Name": "TankTurret001.nemesh",
-                    "Path": "Library\/Meshes\/1563821045.nemesh",
-                    "File": "1563821045.nemesh",
-                    "ShowWireframe": false,
-                    "ShowBoundingBox": false
-                },
-                {
-                    "Type": 3,
-                    "Material": {
-                        "UID": 1500245624,
-                        "Path": "Library\/Materials\/1500245624.nemat",
-                        "File": "1500245624.nemat"
-                    }
-                },
-                {
-                    "Type": 2,
-                    "UID": 2015797784,
-                    "Name": "TankTurret001.nemesh",
-                    "Path": "Library\/Meshes\/2015797784.nemesh",
-                    "File": "2015797784.nemesh",
-                    "ShowWireframe": false,
-                    "ShowBoundingBox": false
                 }
             ]
         },
         {
-            "UID": 1871366930,
-            "ParentUID": 475024382,
+            "UID": 1646237530,
+            "ParentUID": 1510024357,
+            "Name": "Tank",
+            "IsActive": true,
+            "IsStatic": false,
+            "IsSceneRoot": false,
+            "ShowBoundingBoxes": false,
+            "Components": [
+                {
+                    "Type": 1,
+                    "LocalPosition": [
+                        -12.447021484375,
+                        0,
+                        22.132049560546875
+                    ],
+                    "LocalRotation": [
+                        0,
+                        0,
+                        0,
+                        1
+                    ],
+                    "LocalScale": [
+                        1,
+                        1,
+                        1
+                    ]
+                }
+            ]
+        },
+        {
+            "UID": 1720726108,
+            "ParentUID": 1646237530,
             "Name": "TankRenderers",
             "IsActive": true,
             "IsStatic": false,
@@ -362,20 +159,20 @@
             ]
         },
         {
-            "UID": 1969957330,
-            "ParentUID": 1977277331,
-            "Name": "MainScene",
+            "UID": 612377789,
+            "ParentUID": 1720726108,
+            "Name": "TankChassis001",
             "IsActive": true,
             "IsStatic": false,
-            "IsSceneRoot": true,
+            "IsSceneRoot": false,
             "ShowBoundingBoxes": false,
             "Components": [
                 {
                     "Type": 1,
                     "LocalPosition": [
-                        0,
-                        0,
-                        0
+                        12.534276962280273,
+                        -0.080467045307159424,
+                        -22.075138092041016
                     ],
                     "LocalRotation": [
                         0,
@@ -384,10 +181,213 @@
                         1
                     ],
                     "LocalScale": [
-                        1,
-                        1,
-                        1
+                        0.012918000109493732,
+                        0.012918000109493732,
+                        0.012918000109493732
                     ]
+                },
+                {
+                    "Type": 2,
+                    "UID": 355608068,
+                    "Name": "TankChassis001.nemesh",
+                    "Path": "Library\/Meshes\/355608068.nemesh",
+                    "File": "355608068.nemesh",
+                    "ShowWireframe": false,
+                    "ShowBoundingBox": false
+                },
+                {
+                    "Type": 3,
+                    "Material": {
+                        "UID": 2146292452,
+                        "Path": "Library\/Materials\/2146292452.nemat",
+                        "File": "2146292452.nemat"
+                    }
+                },
+                {
+                    "Type": 2,
+                    "UID": 1337498523,
+                    "Name": "TankChassis001.nemesh",
+                    "Path": "Library\/Meshes\/1337498523.nemesh",
+                    "File": "1337498523.nemesh",
+                    "ShowWireframe": false,
+                    "ShowBoundingBox": false
+                },
+                {
+                    "Type": 2,
+                    "UID": 1805829026,
+                    "Name": "TankChassis001.nemesh",
+                    "Path": "Library\/Meshes\/1805829026.nemesh",
+                    "File": "1805829026.nemesh",
+                    "ShowWireframe": false,
+                    "ShowBoundingBox": false
+                }
+            ]
+        },
+        {
+            "UID": 522349337,
+            "ParentUID": 1720726108,
+            "Name": "TankTracksLeft001",
+            "IsActive": true,
+            "IsStatic": false,
+            "IsSceneRoot": false,
+            "ShowBoundingBoxes": false,
+            "Components": [
+                {
+                    "Type": 1,
+                    "LocalPosition": [
+                        12.534276962280273,
+                        -0.080466687679290771,
+                        -22.075138092041016
+                    ],
+                    "LocalRotation": [
+                        0,
+                        0,
+                        0,
+                        1
+                    ],
+                    "LocalScale": [
+                        0.012918000109493732,
+                        0.012918000109493732,
+                        0.012918000109493732
+                    ]
+                },
+                {
+                    "Type": 2,
+                    "UID": 790775092,
+                    "Name": "TankTracksLeft001.nemesh",
+                    "Path": "Library\/Meshes\/790775092.nemesh",
+                    "File": "790775092.nemesh",
+                    "ShowWireframe": false,
+                    "ShowBoundingBox": false
+                },
+                {
+                    "Type": 3,
+                    "Material": {
+                        "UID": 1408629374,
+                        "Path": "Library\/Materials\/1408629374.nemat",
+                        "File": "1408629374.nemat"
+                    }
+                },
+                {
+                    "Type": 2,
+                    "UID": 1419379086,
+                    "Name": "TankTracksLeft001.nemesh",
+                    "Path": "Library\/Meshes\/1419379086.nemesh",
+                    "File": "1419379086.nemesh",
+                    "ShowWireframe": false,
+                    "ShowBoundingBox": false
+                }
+            ]
+        },
+        {
+            "UID": 651664680,
+            "ParentUID": 1720726108,
+            "Name": "TankTracksRight001",
+            "IsActive": true,
+            "IsStatic": false,
+            "IsSceneRoot": false,
+            "ShowBoundingBoxes": false,
+            "Components": [
+                {
+                    "Type": 1,
+                    "LocalPosition": [
+                        12.534276962280273,
+                        -0.080466687679290771,
+                        -22.075138092041016
+                    ],
+                    "LocalRotation": [
+                        0,
+                        0,
+                        0,
+                        1
+                    ],
+                    "LocalScale": [
+                        0.012918000109493732,
+                        0.012918000109493732,
+                        0.012918000109493732
+                    ]
+                },
+                {
+                    "Type": 2,
+                    "UID": 1645084929,
+                    "Name": "TankTracksRight001.nemesh",
+                    "Path": "Library\/Meshes\/1645084929.nemesh",
+                    "File": "1645084929.nemesh",
+                    "ShowWireframe": false,
+                    "ShowBoundingBox": false
+                },
+                {
+                    "Type": 3,
+                    "Material": {
+                        "UID": 2138624012,
+                        "Path": "Library\/Materials\/2138624012.nemat",
+                        "File": "2138624012.nemat"
+                    }
+                },
+                {
+                    "Type": 2,
+                    "UID": 1038374085,
+                    "Name": "TankTracksRight001.nemesh",
+                    "Path": "Library\/Meshes\/1038374085.nemesh",
+                    "File": "1038374085.nemesh",
+                    "ShowWireframe": false,
+                    "ShowBoundingBox": false
+                }
+            ]
+        },
+        {
+            "UID": 545983495,
+            "ParentUID": 1720726108,
+            "Name": "TankTurret001",
+            "IsActive": true,
+            "IsStatic": false,
+            "IsSceneRoot": false,
+            "ShowBoundingBoxes": false,
+            "Components": [
+                {
+                    "Type": 1,
+                    "LocalPosition": [
+                        12.534275054931641,
+                        -0.08046412467956543,
+                        -22.075136184692383
+                    ],
+                    "LocalRotation": [
+                        0,
+                        0,
+                        0,
+                        1
+                    ],
+                    "LocalScale": [
+                        0.012918000109493732,
+                        0.012918000109493732,
+                        0.012918000109493732
+                    ]
+                },
+                {
+                    "Type": 2,
+                    "UID": 1493765937,
+                    "Name": "TankTurret001.nemesh",
+                    "Path": "Library\/Meshes\/1493765937.nemesh",
+                    "File": "1493765937.nemesh",
+                    "ShowWireframe": false,
+                    "ShowBoundingBox": false
+                },
+                {
+                    "Type": 3,
+                    "Material": {
+                        "UID": 1814364259,
+                        "Path": "Library\/Materials\/1814364259.nemat",
+                        "File": "1814364259.nemat"
+                    }
+                },
+                {
+                    "Type": 2,
+                    "UID": 1761510157,
+                    "Name": "TankTurret001.nemesh",
+                    "Path": "Library\/Meshes\/1761510157.nemesh",
+                    "File": "1761510157.nemesh",
+                    "ShowWireframe": false,
+                    "ShowBoundingBox": false
                 }
             ]
         }

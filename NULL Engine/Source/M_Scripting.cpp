@@ -151,11 +151,6 @@ void Write(WrenVM* vm, const char* text)
 	LOG("%s", text);
 }
 
-char* LoadModule(WrenVM* vm, const char* name) 
-{ 
-	return nullptr;
-}
-
 // --- WREN VM METHODS ---
 
 void M_Scripting::LoadScript(const char* path)

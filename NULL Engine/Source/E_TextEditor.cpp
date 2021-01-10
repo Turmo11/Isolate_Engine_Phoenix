@@ -10,6 +10,8 @@
 E_TextEditor::E_TextEditor() : EditorPanel("Console")
 {
 	file_path = "Assets/Scripts/Move.wren";
+	white_spaces = false;
+	spacing = LineSpacing::HALF;
 }
 
 E_TextEditor::~E_TextEditor()
@@ -77,6 +79,30 @@ bool E_TextEditor::Draw(ImGuiIO& io)
 
 			ImGui::EndMenu();
 		}
+		if (ImGui::BeginMenu("Format"))
+		{
+			if (ImGui::MenuItem("Show White Spaces", nullptr, &white_spaces));
+			
+			if (ImGui::BeginMenu("Line Spacing"))
+			{
+				if (ImGui::MenuItem("Single"))
+				{
+					SelectSpacing(LineSpacing::SINGLE);
+				}
+				if (ImGui::MenuItem("1,5"))
+				{
+					SelectSpacing(LineSpacing::HALF);
+				}
+				if (ImGui::MenuItem("Double"))
+				{
+					SelectSpacing(LineSpacing::DOUBLE);
+				}
+
+				ImGui::EndMenu();
+			}
+
+			ImGui::EndMenu();
+		}
 
 		ImGui::EndMenuBar();
 	}
@@ -93,6 +119,9 @@ bool E_TextEditor::Draw(ImGuiIO& io)
 
 	script_editor.Render("TextEditor");
 	ImGui::End();
+
+	script_editor.SetShowWhitespaces(white_spaces);
+	script_editor.SetLineSpacing(GetSpacing(spacing));
 
 	return ret;
 }
@@ -133,6 +162,28 @@ void E_TextEditor::OpenScript(std::string script_to_open)
 	file_path = ASSETS_SCRIPTS_PATH + script_to_open;
 	InitializeTextEditor();
 	App->scripting->LoadScript(file_path.c_str());
+}
+
+float E_TextEditor::GetSpacing(LineSpacing _spacing)
+{
+	switch (_spacing)
+	{
+		case LineSpacing::SINGLE:
+		{
+			return 1.0f;
+			break;
+		}
+		case LineSpacing::HALF:
+		{
+			return 1.5f;
+			break;
+		}
+		case LineSpacing::DOUBLE:
+		{
+			return 2.0f;
+			break;
+		}
+	}
 }
 
 

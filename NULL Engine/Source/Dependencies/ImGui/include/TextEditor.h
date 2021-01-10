@@ -234,6 +234,9 @@ public:
 	void SetTabSize(int aValue);
 	inline int GetTabSize() const { return mTabSize; }
 
+	void SetLineSpacing(float value) { mLineSpacing = value; }
+	float GetLineSpacing() const { return mLineSpacing; }
+
 	void InsertText(const std::string& aValue);
 	void InsertText(const char* aValue);
 
